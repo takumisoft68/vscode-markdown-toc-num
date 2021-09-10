@@ -48,17 +48,17 @@
 				{
 					"when": "editorLangId == markdown",
 					"command": "markdown-toc.deleteChapterNumber",
-					"group": "markdown-toc@1"
+					"group": "markdown-toc@2"
 				},
 				{
 					"when": "editorLangId == markdown",
 					"command": "markdown-toc.insertToc",
-					"group": "markdown-toc@1"
+					"group": "markdown-toc@3"
 				},
 				{
 					"when": "editorLangId == markdown",
 					"command": "markdown-toc.deleteToc",
-					"group": "markdown-toc@1"
+					"group": "markdown-toc@4"
 				}
 			]
 		},
