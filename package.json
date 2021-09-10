@@ -16,17 +16,77 @@
 	],
 	"activationEvents": [
 		"onLanguage:markdown",
-		"onLanguage:mdx",
-		"onCommand:markdown-toc.helloWorld"
+		"onLanguage:mdx"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "markdown-toc.helloWorld",
-				"title": "Hello World"
+				"command": "markdown-toc.insertChapterNumber",
+				"title": "markdown-toc: Insert/Update chapter number"
+			},
+			{
+				"command": "markdown-toc.deleteChapterNumber",
+				"title": "markdown-toc: Delete chapter number"
+			},
+			{
+				"command": "markdown-toc.insertToc",
+				"title": "markdown-toc: Insert/Update table of contents"
+			},
+			{
+				"command": "markdown-toc.deleteToc",
+				"title": "markdown-toc: Delete table of contents"
 			}
-		]
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"when": "editorLangId == markdown",
+					"command": "markdown-toc.insertChapterNumber",
+					"group": "markdown-toc@1"
+				},
+				{
+					"when": "editorLangId == markdown",
+					"command": "markdown-toc.deleteChapterNumber",
+					"group": "markdown-toc@1"
+				},
+				{
+					"when": "editorLangId == markdown",
+					"command": "markdown-toc.insertToc",
+					"group": "markdown-toc@1"
+				},
+				{
+					"when": "editorLangId == markdown",
+					"command": "markdown-toc.deleteToc",
+					"group": "markdown-toc@1"
+				}
+			]
+		},
+		"configuration": {
+			"title": "Markdown TOC",
+			"properties": {
+				"markdown-toc.tocDepthFrom": {
+					"type": "number",
+					"default": 1,
+					"description": "TOC depth control [1-6]"
+				},
+				"markdown-toc.tocDepthTo": {
+					"type": "number",
+					"default": 6,
+					"description": "TOC depth control [1-6]"
+				},
+				"markdown-toc.chapterDepthFrom": {
+					"type": "number",
+					"default": 1,
+					"description": "Chapter number depth control [1-6]"
+				},
+				"markdown-toc.chapterDepthTo": {
+					"type": "number",
+					"default": 6,
+					"description": "Chapter number depth control [1-6]"
+				}
+			}
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
