@@ -1,15 +1,22 @@
 {
 	"name": "markdown-toc",
+	"publisher": "TakumiI",
 	"displayName": "Markdown TOC",
 	"description": "Create table of contents. Insert chapter numbers.",
 	"version": "0.0.1",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/takumisoft68/vscode-markdown-toc"
+	},
 	"engines": {
-		"vscode": "^1.60.0"
+		"vscode": "^1.40.0"
 	},
 	"categories": [
 		"Other"
 	],
 	"activationEvents": [
+		"onLanguage:markdown",
+		"onLanguage:mdx",
 		"onCommand:markdown-toc.helloWorld"
 	],
 	"main": "./out/extension.js",
