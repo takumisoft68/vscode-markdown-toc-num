@@ -78,12 +78,12 @@
 				"markdown-toc.chapterDepthFrom": {
 					"type": "number",
 					"default": 1,
-					"description": "Chapter number depth control, from [1-6]"
+					"description": "Chapter numbering depth control, from [1-6]"
 				},
 				"markdown-toc.chapterDepthTo": {
 					"type": "number",
 					"default": 6,
-					"description": "Chapter number depth control, to [1-6]"
+					"description": "Chapter numbering depth control, to [1-6]"
 				}
 			}
 		}
