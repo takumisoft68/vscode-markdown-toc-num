@@ -31,6 +31,13 @@ export function getConfig(doc: vscode.TextDocument): Config {
     const chapterDepthFromDefault = 1;
     const chapterDepthToDefault = 6;
 
+
+    // get configurations
+    let tocDepthFrom = <number>vscode.workspace.getConfiguration('"markdown-toc').get('tocDepthFrom');
+    let tocDepthTo = <number>vscode.workspace.getConfiguration('"markdown-toc').get('tocDepthTo');
+    let chapterDepthFrom = <number>vscode.workspace.getConfiguration('"markdown-toc').get('chapterDepthFrom');
+    let chapterDepthTo = <number>vscode.workspace.getConfiguration('"markdown-toc').get('chapterDepthTo');
+
     /**
      * Fix value in range
      * @param val Value
@@ -41,6 +48,12 @@ export function getConfig(doc: vscode.TextDocument): Config {
     let fixInRange = (val: number, min: number, max: number): number => {
         return (val === undefined) ? min : (val < min) ? min : (val > max) ? max : val;
     };
+    
+    tocDepthFrom = tocDepthFrom === undefined ? tocDepthFromDefault : fixInRange(tocDepthFrom, tocDepthFromMin, tocDepthFromMax);
+    tocDepthTo = tocDepthTo === undefined ? tocDepthToDefault : fixInRange(tocDepthTo, tocDepthToMin, tocDepthToMax);
+    chapterDepthFrom = chapterDepthFrom === undefined ? chapterDepthFromDefault : fixInRange(chapterDepthFrom, chapterDepthFromMin, chapterDepthFromMax);
+    chapterDepthTo = chapterDepthTo === undefined ? chapterDepthToDefault : fixInRange(chapterDepthTo, chapterDepthToMin, chapterDepthToMax);
+
 
     /**
      * Find and decode config value from text
@@ -61,18 +74,7 @@ export function getConfig(doc: vscode.TextDocument): Config {
 
         return fixInRange(num, min, max);
     };
-
-    // get configurations
-    let tocDepthFrom = <number>vscode.workspace.getConfiguration('"markdown-toc').get('tocDepthFrom');
-    let tocDepthTo = <number>vscode.workspace.getConfiguration('"markdown-toc').get('tocDepthTo');
-    let chapterDepthFrom = <number>vscode.workspace.getConfiguration('"markdown-toc').get('chapterDepthFrom');
-    let chapterDepthTo = <number>vscode.workspace.getConfiguration('"markdown-toc').get('chapterDepthTo');
-
-    tocDepthFrom = tocDepthFrom === undefined ? tocDepthFromDefault : fixInRange(tocDepthFrom, tocDepthFromMin, tocDepthFromMax);
-    tocDepthTo = tocDepthTo === undefined ? tocDepthToDefault : fixInRange(tocDepthTo, tocDepthToMin, tocDepthToMax);
-    chapterDepthFrom = chapterDepthFrom === undefined ? chapterDepthFromDefault : fixInRange(chapterDepthFrom, chapterDepthFromMin, chapterDepthFromMax);
-    chapterDepthTo = chapterDepthTo === undefined ? chapterDepthToDefault : fixInRange(chapterDepthTo, chapterDepthToMin, chapterDepthToMax);
-
+    
     // decode config in toc anchor line
     const [tocStartLine,] = toc.getTocPosition(doc);
     if (tocStartLine >= 0) {
