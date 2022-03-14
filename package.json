@@ -26,16 +26,16 @@
 				"title": "markdown-toc: Insert/Update chapter number"
 			},
 			{
-				"command": "markdown-toc.deleteChapterNumber",
-				"title": "markdown-toc: Delete chapter number"
+				"command": "markdown-toc.removeChapterNumber",
+				"title": "markdown-toc: Remove chapter number"
 			},
 			{
 				"command": "markdown-toc.insertToc",
 				"title": "markdown-toc: Insert/Update table of contents"
 			},
 			{
-				"command": "markdown-toc.deleteToc",
-				"title": "markdown-toc: Delete table of contents"
+				"command": "markdown-toc.removeToc",
+				"title": "markdown-toc: Remove table of contents"
 			}
 		],
 		"menus": {
@@ -47,7 +47,7 @@
 				},
 				{
 					"when": "editorLangId == markdown",
-					"command": "markdown-toc.deleteChapterNumber",
+					"command": "markdown-toc.removeChapterNumber",
 					"group": "markdown-toc@2"
 				},
 				{
@@ -57,7 +57,7 @@
 				},
 				{
 					"when": "editorLangId == markdown",
-					"command": "markdown-toc.deleteToc",
+					"command": "markdown-toc.removeToc",
 					"group": "markdown-toc@4"
 				}
 			]
@@ -100,7 +100,6 @@
 		"@types/glob": "^7.1.3",
 		"@types/mocha": "^8.2.2",
 		"@types/node": "14.x",
-		"@types/vscode": "^1.60.0",
 		"@typescript-eslint/eslint-plugin": "^4.26.0",
 		"@typescript-eslint/parser": "^4.26.0",
 		"eslint": "^7.27.0",
@@ -108,5 +107,8 @@
 		"mocha": "^9.2.1",
 		"typescript": "^4.3.2",
 		"vscode-test": "^1.5.2"
+	},
+	"dependencies": {
+		"@types/vscode": "^1.40.0"
 	}
 }
