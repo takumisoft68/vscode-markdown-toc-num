@@ -1,70 +1,90 @@
-# markdown-toc README
+# Markdown TOC
 
-This is the README for your extension "markdown-toc". After writing up a brief description, we recommend including the following sections.
+マークダウンに目次を作成する拡張機能
 
-## Features
+## 1. 主な機能
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- 目次を作成する
+- 見出しに番号を付ける
 
-For example if there is an image subfolder under your extension project workspace:
+右クリックメニューで `markdown-toc: Insert/Update table of contents` を実行する。
+実行した場所に目次を作成する。
 
-\!\[feature X\]\(images/feature-x.png\)
+```md
+<!-- TOC -->
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+- 1. AAA
+    - 1.1. AAA-1
+- 2. BBB
+    - 2.2. BBB-1
 
-## Requirements
+<!-- /TOC -->
+```
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+## 2. 補足機能
 
-## Extension Settings
+- 目次を作成する位置を指定する
+- 目次から除外する
+- 目次に含める見出しの階層を指定する
+- 見出しに番号を付ける階層を指定する
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+### 2.1. 目次から除外する
 
-For example:
+対象の見出しの上に<!-- omit in toc -->と入力することで、その見出しは目次内容から除外される。
 
-This extension contributes the following settings:
+### 2.2. 目次に含める見出しの階層を指定する
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+設定の markdown-toc.tocDepthFrom, markdown-toc.tocDepthTo で指定した範囲の階層のみ目次に含める。
 
-## Known Issues
+デフォルトは 1 - 6。
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+以下のように本文中で指定することもできる。
 
-## Release Notes
+- 方法1:
 
-Users appreciate release notes as you update your extension.
+    ```md
+    <!-- TOC tocDepthFrom:1 tocDepthTo:6 -->
+    ```
 
-### 1.0.0
+- 方法2:
 
-Initial release of ...
+    ```md
+    <!-- TOC tocDepth:1..6 -->
+    ```
 
-### 1.0.1
+### 2.3. 見出しに番号を付ける階層を指定する
 
-Fixed issue #.
+設定の markdown-toc.chapterDepthFrom, markdown-toc.chapterDepthTo で指定した範囲の階層のみ番号を付けるようにできる。
 
-### 1.1.0
+デフォルトは 2 - 6。
 
-Added features X, Y, and Z.
+以下のように本文中で指定することもできる。
 
------------------------------------------------------------------------------------------------------------
-## Following extension guidelines
+- 方法1:
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+    ```md
+    <!-- TOC chapterDepthFrom:2 chapterDepthTo:6 -->
+    ```
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+- 方法2:
 
-## Working with Markdown
+    ```md
+    <!-- TOC chapterDepth:2..6 -->
+    ```
 
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
 
-### For more information
+## 3. 注力
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+特に日本語にフォーカスしたマークダウン目次作成エクステンション
 
-**Enjoy!**
+## 4. アンカー作成スキーム
+
+1. !@#$%^&*()_+={}][|\"':;?/>.<,`~ の文字は削除
+1. アルファベットは小文字に変換
+1. スペースは - に変換
+1. 日本語などアルファベット以外の文字はそのまま
+
+### 4.1. 参考にしたサイト
+
+https://qiita.com/satokaz/items/64582da4640898c4bf42
