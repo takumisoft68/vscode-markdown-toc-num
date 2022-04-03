@@ -1,7 +1,7 @@
 {
 	"name": "markdown-toc",
 	"publisher": "TakumiI",
-	"displayName": "Markdown TOC",
+	"displayName": "Markdown TOC & Chapter Number",
 	"description": "Create table of contents. Insert chapter numbers.",
 	"version": "0.0.1",
 	"repository": {
@@ -22,34 +22,24 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "markdown-toc.insertChapterNumber",
-				"title": "markdown-toc: Insert/Update chapter number"
-			},
-			{
-				"command": "markdown-toc.removeChapterNumber",
-				"title": "markdown-toc: Remove chapter number"
-			},
-			{
 				"command": "markdown-toc.insertToc",
 				"title": "markdown-toc: Insert/Update table of contents"
 			},
 			{
 				"command": "markdown-toc.removeToc",
 				"title": "markdown-toc: Remove table of contents"
+			},
+			{
+				"command": "markdown-toc.insertChapterNumber",
+				"title": "markdown-toc: Insert/Update chapter number"
+			},
+			{
+				"command": "markdown-toc.removeChapterNumber",
+				"title": "markdown-toc: Remove chapter number"
 			}
 		],
 		"menus": {
 			"editor/context": [
-				{
-					"when": "editorLangId == markdown",
-					"command": "markdown-toc.insertChapterNumber",
-					"group": "markdown-toc@1"
-				},
-				{
-					"when": "editorLangId == markdown",
-					"command": "markdown-toc.removeChapterNumber",
-					"group": "markdown-toc@2"
-				},
 				{
 					"when": "editorLangId == markdown",
 					"command": "markdown-toc.insertToc",
@@ -59,6 +49,16 @@
 					"when": "editorLangId == markdown",
 					"command": "markdown-toc.removeToc",
 					"group": "markdown-toc@4"
+				},
+				{
+					"when": "editorLangId == markdown",
+					"command": "markdown-toc.insertChapterNumber",
+					"group": "markdown-toc@1"
+				},
+				{
+					"when": "editorLangId == markdown",
+					"command": "markdown-toc.removeChapterNumber",
+					"group": "markdown-toc@2"
 				}
 			]
 		},
@@ -67,23 +67,38 @@
 			"properties": {
 				"markdown-toc.tocDepthFrom": {
 					"type": "number",
-					"default": 1,
+					"default": 2,
 					"description": "TOC depth control, from [1-6]"
 				},
 				"markdown-toc.tocDepthTo": {
 					"type": "number",
-					"default": 6,
+					"default": 3,
 					"description": "TOC depth control, to [1-6]"
 				},
 				"markdown-toc.chapterDepthFrom": {
 					"type": "number",
-					"default": 1,
+					"default": 2,
 					"description": "Chapter numbering depth control, from [1-6]"
 				},
 				"markdown-toc.chapterDepthTo": {
 					"type": "number",
 					"default": 6,
 					"description": "Chapter numbering depth control, to [1-6]"
+				},
+				"markdown-toc.anchorMode": {
+					"type": "string",
+					"description": "Anchor style.",
+					"enum": [
+						"gitlab",
+						"vscode",
+						"none"
+					],
+					"enumDescriptions": [
+						"Compatible with GitLab.",
+						"Compatible with VSCode.",
+						"Not insert anchor."
+					],
+					"default": "vscode"
 				}
 			}
 		}

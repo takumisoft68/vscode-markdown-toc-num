@@ -1,90 +1,53 @@
-# Markdown TOC
+# Markdown TOC & Chapter Number
 
-マークダウンに目次を作成する拡張機能
+Add commands for table of contents (TOC) and chapter numbering to markdown.
 
-## 1. 主な機能
+## Features
 
-- 目次を作成する
-- 見出しに番号を付ける
+- Add command to generate a table of contents (TOC)
+- Add command to add chapter numbers
+- Control each depth independently
+- Insert anchor in TOC
 
-右クリックメニューで `markdown-toc: Insert/Update table of contents` を実行する。
-実行した場所に目次を作成する。
+## Demo
+
+![demo](images/insert.gif)
+
+### Configuration
+
+| Configuration ID              | Description                                 | Type   | Default |
+| ----------------------------- | ------------------------------------------- | ------ | ------- |
+| markdown-toc.tocDepthFrom     | TOC depth control, from [1-6]               | number | 2       |
+| markdown-toc.tocDepthTo       | TOC depth control, to [1-6]                 | number | 3       |
+| markdown-toc.chapterDepthFrom | Chapter numbering depth control, from [1-6] | number | 1       |
+| markdown-toc.chapterDepthTo   | Chapter numbering depth control, to [1-6]   | number | 6       |
+| markdown-toc.anchorMode       | Anchor style [vscode, gitlab, none]         | string | vscode  |
+
+You can override them inline.
 
 ```md
-<!-- TOC -->
+<!-- TOC tocDepthFrom:1 tocDepthTo:6 -->
 
-- 1. AAA
-    - 1.1. AAA-1
-- 2. BBB
-    - 2.2. BBB-1
+<!-- TOC tocDepth:1..6 -->
 
-<!-- /TOC -->
+<!-- TOC chapterDepthFrom:2 chapterDepthTo:6 -->
+
+<!-- TOC chapterDepth:2..6 -->
 ```
 
-## 2. 補足機能
+### Omit chapter in TOC
 
-- 目次を作成する位置を指定する
-- 目次から除外する
-- 目次に含める見出しの階層を指定する
-- 見出しに番号を付ける階層を指定する
+In case you are seeing unexpected TOC recognition, you can add a <!-- omit in toc --> comment above the list.
 
-### 2.1. 目次から除外する
+## Release Notes
 
-対象の見出しの上に<!-- omit in toc -->と入力することで、その見出しは目次内容から除外される。
+- See [changelog](CHANGELOG.md).
 
-### 2.2. 目次に含める見出しの階層を指定する
+## Links
 
-設定の markdown-toc.tocDepthFrom, markdown-toc.tocDepthTo で指定した範囲の階層のみ目次に含める。
+- [Source Code](https://github.com/takumisoft68/vscode-markdown-toc)
+- [Marketplace](https://marketplace.visualstudio.com/items?itemName=TakumiI.markdown-toc)
 
-デフォルトは 1 - 6。
+## License
 
-以下のように本文中で指定することもできる。
-
-- 方法1:
-
-    ```md
-    <!-- TOC tocDepthFrom:1 tocDepthTo:6 -->
-    ```
-
-- 方法2:
-
-    ```md
-    <!-- TOC tocDepth:1..6 -->
-    ```
-
-### 2.3. 見出しに番号を付ける階層を指定する
-
-設定の markdown-toc.chapterDepthFrom, markdown-toc.chapterDepthTo で指定した範囲の階層のみ番号を付けるようにできる。
-
-デフォルトは 2 - 6。
-
-以下のように本文中で指定することもできる。
-
-- 方法1:
-
-    ```md
-    <!-- TOC chapterDepthFrom:2 chapterDepthTo:6 -->
-    ```
-
-- 方法2:
-
-    ```md
-    <!-- TOC chapterDepth:2..6 -->
-    ```
-
-
-
-## 3. 注力
-
-特に日本語にフォーカスしたマークダウン目次作成エクステンション
-
-## 4. アンカー作成スキーム
-
-1. !@#$%^&*()_+={}][|\"':;?/>.<,`~ の文字は削除
-1. アルファベットは小文字に変換
-1. スペースは - に変換
-1. 日本語などアルファベット以外の文字はそのまま
-
-### 4.1. 参考にしたサイト
-
-https://qiita.com/satokaz/items/64582da4640898c4bf42
+Apache 2.0, See [LICENSE](LICENSE) for more information.
