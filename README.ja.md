@@ -7,7 +7,7 @@
 - 目次を作成する
 - 見出しに番号を付ける
 
-右クリックメニューで `markdown-toc: Insert/Update table of contents` を実行する。
+右クリックメニューで `markdown-toc-num: Insert/Update table of contents` を実行する。
 実行した場所に目次を作成する。
 
 ```md
@@ -34,7 +34,7 @@
 
 ### 2.2. 目次に含める見出しの階層を指定する
 
-設定の markdown-toc.tocDepthFrom, markdown-toc.tocDepthTo で指定した範囲の階層のみ目次に含める。
+設定の markdown-toc-num.tocDepthFrom, markdown-toc-num.tocDepthTo で指定した範囲の階層のみ目次に含める。
 
 デフォルトは 2 - 3。
 
@@ -54,7 +54,7 @@
 
 ### 2.3. 見出しに番号を付ける階層を指定する
 
-設定の markdown-toc.chapterDepthFrom, markdown-toc.chapterDepthTo で指定した範囲の階層のみ番号を付けるようにできる。
+設定の markdown-toc-num.chapterDepthFrom, markdown-toc-num.chapterDepthTo で指定した範囲の階層のみ番号を付けるようにできる。
 
 デフォルトは 2 - 6。
 

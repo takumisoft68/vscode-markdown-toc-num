@@ -15,13 +15,13 @@ Add commands for table of contents (TOC) and chapter numbering to markdown.
 
 ### Configuration
 
-| Configuration ID              | Description                                 | Type   | Default |
-| ----------------------------- | ------------------------------------------- | ------ | ------- |
-| markdown-toc.tocDepthFrom     | TOC depth control, from [1-6]               | number | 2       |
-| markdown-toc.tocDepthTo       | TOC depth control, to [1-6]                 | number | 3       |
-| markdown-toc.chapterDepthFrom | Chapter numbering depth control, from [1-6] | number | 1       |
-| markdown-toc.chapterDepthTo   | Chapter numbering depth control, to [1-6]   | number | 6       |
-| markdown-toc.anchorMode       | Anchor style [vscode, gitlab, none]         | string | vscode  |
+| Configuration ID                  | Description                                 | Type   | Default |
+| --------------------------------- | ------------------------------------------- | ------ | ------- |
+| markdown-toc-num.tocDepthFrom     | TOC depth control, from [1-6]               | number | 2       |
+| markdown-toc-num.tocDepthTo       | TOC depth control, to [1-6]                 | number | 3       |
+| markdown-toc-num.chapterDepthFrom | Chapter numbering depth control, from [1-6] | number | 1       |
+| markdown-toc-num.chapterDepthTo   | Chapter numbering depth control, to [1-6]   | number | 6       |
+| markdown-toc-num.anchorMode       | Anchor style [vscode, gitlab, none]         | string | vscode  |
 
 You can override them inline.
 
@@ -45,8 +45,8 @@ In case you are seeing unexpected TOC recognition, you can add a <!-- omit in to
 
 ## Links
 
-- [Source Code](https://github.com/takumisoft68/vscode-markdown-toc)
-- [Marketplace](https://marketplace.visualstudio.com/items?itemName=TakumiI.markdown-toc)
+- [Source Code](https://github.com/takumisoft68/vscode-markdown-toc-num)
+- [Marketplace](https://marketplace.visualstudio.com/items?itemName=TakumiI.markdown-toc-num)
 
 ## License
 

@@ -32,9 +32,9 @@ export function insertTocCommand(): void {
 
     // TOCを挿入したテキストを生成する
     const tocText =
-     tocStartLineText + '\n\n'
-     + toc.makeTocText(srcText, current.tocDepthFrom, current.tocDepthTo, indentSize, current.anchorMode) + '\n\n'
-     + tocEndLineText;
+    tocStartLineText + '\n\n'
+    + toc.makeTocText(srcText, current.tocDepthFrom, current.tocDepthTo, indentSize, current.anchorMode) + '\n\n'
+    + tocEndLineText;
 
     //エディタ選択範囲にテキストを反映
     const tocStartPosition = new vscode.Position(tocStartLine, 0);

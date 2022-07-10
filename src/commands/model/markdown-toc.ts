@@ -7,7 +7,7 @@ export const enum AnchorMode {
 };
 
 export function makeTocText(srcText: string, depthFrom: number, depthTo: number, indentSize: number, anchorMode: AnchorMode): string {
-    console.debug('markdown-toc.makeTocText');
+    console.debug('markdown-toc-num.makeTocText');
 
     // チャプターをパースする
     const chapters = chapterParser.parseChapter(srcText);

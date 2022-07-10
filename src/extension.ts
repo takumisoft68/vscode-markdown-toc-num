@@ -18,10 +18,10 @@ export function activate(context: vscode.ExtensionContext) {
 		context.subscriptions.push(command);
 	}
 
-	registerCommandNice('markdown-toc.insertToc', insertTocCommand.insertTocCommand);
-	registerCommandNice('markdown-toc.removeToc', removeTocCommand.removeTocCommand);
-	registerCommandNice('markdown-toc.insertChapterNumber', insertChapterNumberCommand.insertChapterNumberCommand);
-	registerCommandNice('markdown-toc.removeChapterNumber', removeChapterNumberCommand.removeChapterNumberCommand);
+	registerCommandNice('markdown-toc-num.insertToc', insertTocCommand.insertTocCommand);
+	registerCommandNice('markdown-toc-num.removeToc', removeTocCommand.removeTocCommand);
+	registerCommandNice('markdown-toc-num.insertChapterNumber', insertChapterNumberCommand.insertChapterNumberCommand);
+	registerCommandNice('markdown-toc-num.removeChapterNumber', removeChapterNumberCommand.removeChapterNumberCommand);
 }
 
 // this method is called when your extension is deactivated

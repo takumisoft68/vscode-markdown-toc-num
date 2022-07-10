@@ -2,7 +2,7 @@ import * as chapterParser from './markdown-chapter-helpers/chapter-parser';
 
 
 export function insertChapterNumber(srcText: string, chapterDepthFrom: number, chapterDepthTo: number): string {
-    console.debug('markdown-toc.insertChapterNumber');
+    console.debug('markdown-toc-num.insertChapterNumber');
 
     // チャプターをパースする
     const chapters = chapterParser.parseChapter(srcText);
@@ -75,7 +75,7 @@ export function insertChapterNumber(srcText: string, chapterDepthFrom: number, c
 }
 
 export function removeChapterNumber(srcText: string): string {
-    console.debug('markdown-toc.removeChapterNumber');
+    console.debug('markdown-toc-num.removeChapterNumber');
 
     // チャプターをパースする
     const chapters = chapterParser.parseChapter(srcText);

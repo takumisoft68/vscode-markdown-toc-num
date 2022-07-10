@@ -1,12 +1,12 @@
 {
-	"name": "markdown-toc",
+	"name": "markdown-toc-num",
 	"publisher": "TakumiI",
 	"displayName": "Markdown TOC & Chapter Number",
 	"description": "Create table of contents. Insert chapter numbers.",
 	"version": "0.0.1",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/takumisoft68/vscode-markdown-toc"
+		"url": "https://github.com/takumisoft68/vscode-markdown-toc-num"
 	},
 	"engines": {
 		"vscode": "^1.40.0"
@@ -22,70 +22,70 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "markdown-toc.insertToc",
-				"title": "markdown-toc: Insert/Update table of contents"
+				"command": "markdown-toc-num.insertToc",
+				"title": "markdown-toc-num: Insert/Update table of contents"
 			},
 			{
-				"command": "markdown-toc.removeToc",
-				"title": "markdown-toc: Remove table of contents"
+				"command": "markdown-toc-num.removeToc",
+				"title": "markdown-toc-num: Remove table of contents"
 			},
 			{
-				"command": "markdown-toc.insertChapterNumber",
-				"title": "markdown-toc: Insert/Update chapter number"
+				"command": "markdown-toc-num.insertChapterNumber",
+				"title": "markdown-toc-num: Insert/Update chapter number"
 			},
 			{
-				"command": "markdown-toc.removeChapterNumber",
-				"title": "markdown-toc: Remove chapter number"
+				"command": "markdown-toc-num.removeChapterNumber",
+				"title": "markdown-toc-num: Remove chapter number"
 			}
 		],
 		"menus": {
 			"editor/context": [
 				{
 					"when": "editorLangId == markdown",
-					"command": "markdown-toc.insertToc",
-					"group": "markdown-toc@3"
+					"command": "markdown-toc-num.insertToc",
+					"group": "markdown-toc-num@3"
 				},
 				{
 					"when": "editorLangId == markdown",
-					"command": "markdown-toc.removeToc",
-					"group": "markdown-toc@4"
+					"command": "markdown-toc-num.removeToc",
+					"group": "markdown-toc-num@4"
 				},
 				{
 					"when": "editorLangId == markdown",
-					"command": "markdown-toc.insertChapterNumber",
-					"group": "markdown-toc@1"
+					"command": "markdown-toc-num.insertChapterNumber",
+					"group": "markdown-toc-num@1"
 				},
 				{
 					"when": "editorLangId == markdown",
-					"command": "markdown-toc.removeChapterNumber",
-					"group": "markdown-toc@2"
+					"command": "markdown-toc-num.removeChapterNumber",
+					"group": "markdown-toc-num@2"
 				}
 			]
 		},
 		"configuration": {
 			"title": "Markdown TOC",
 			"properties": {
-				"markdown-toc.tocDepthFrom": {
+				"markdown-toc-num.tocDepthFrom": {
 					"type": "number",
 					"default": 2,
 					"description": "TOC depth control, from [1-6]"
 				},
-				"markdown-toc.tocDepthTo": {
+				"markdown-toc-num.tocDepthTo": {
 					"type": "number",
 					"default": 3,
 					"description": "TOC depth control, to [1-6]"
 				},
-				"markdown-toc.chapterDepthFrom": {
+				"markdown-toc-num.chapterDepthFrom": {
 					"type": "number",
 					"default": 2,
 					"description": "Chapter numbering depth control, from [1-6]"
 				},
-				"markdown-toc.chapterDepthTo": {
+				"markdown-toc-num.chapterDepthTo": {
 					"type": "number",
 					"default": 6,
 					"description": "Chapter numbering depth control, to [1-6]"
 				},
-				"markdown-toc.anchorMode": {
+				"markdown-toc-num.anchorMode": {
 					"type": "string",
 					"description": "Anchor style.",
 					"enum": [
