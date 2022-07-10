@@ -28,7 +28,7 @@ const tocDepthToDefault = 3;
 const chapterDepthFromDefault = 2;
 const chapterDepthToDefault = 6;
 
-const anchorModeDefault = AnchorMode.vscode;
+const anchorModeDefault = AnchorMode.vscode_gitlab;
 
 export function getCurrentConfig(text: string): Config {
     const defaultConfig = getDefaultConfig();
@@ -77,11 +77,14 @@ function getConfig(defaultConfig: Config): Config {
 
     let anchorModeText = <string>vscode.workspace.getConfiguration('"markdown-toc-num').get('anchorMode');
     let anchorMode = defaultConfig.anchorMode;
-    if(anchorModeText === 'gitlab') {
-        anchorMode = AnchorMode.gitlab;
+    if(anchorModeText === 'vscode,gitlab') {
+        anchorMode = AnchorMode.vscode_gitlab;
     }
-    if(anchorModeText === 'vscode') {
-        anchorMode = AnchorMode.vscode;
+    if(anchorModeText === 'github,azure') {
+        anchorMode = AnchorMode.github_azure;
+    }
+    if(anchorModeText === 'embed') {
+        anchorMode = AnchorMode.embed;
     }
     if(anchorModeText === 'none') {
         anchorMode = AnchorMode.none;
@@ -167,6 +170,37 @@ function parseConfig(tocHeader: string, defaultConfig: Config) {
         chapterDepthFrom = fixInRange(chapterDepthFrom, chapterDepthFromMin, chapterDepthFromMax);
         chapterDepthTo = fixInRange(chapterDepthTo, chapterDepthToMin, chapterDepthToMax);
     });
+    words.forEach(word => {
+        if(word.startsWith('anchorMode:')) {
+            const anchorModeText = word.replace('anchorMode:', '');
+            if(anchorModeText === 'vscode,gitlab') {
+                anchorMode = AnchorMode.vscode_gitlab;
+            }
+            else if(anchorModeText === 'github,azure') {
+                anchorMode = AnchorMode.github_azure;
+            }
+            else if(anchorModeText === 'vscode') {
+                anchorMode = AnchorMode.vscode_gitlab;
+            }
+            else if(anchorModeText === 'gitlab') {
+                anchorMode = AnchorMode.vscode_gitlab;
+            }
+            else if(anchorModeText === 'github') {
+                anchorMode = AnchorMode.github_azure;
+            }
+            else if(anchorModeText === 'azure') {
+                anchorMode = AnchorMode.github_azure;
+            }
+            else if(anchorModeText === 'embed') {
+                anchorMode = AnchorMode.embed;
+            }
+            else if(anchorModeText === 'none') {
+                anchorMode = AnchorMode.none;
+            }
+        }
+    });
+
+
 
     return {tocDepthFrom, tocDepthTo, chapterDepthFrom, chapterDepthTo, anchorMode};
 }

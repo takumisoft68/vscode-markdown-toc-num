@@ -1,5 +1,5 @@
 import * as chapterParser from './markdown-chapter-helpers/chapter-parser';
-
+import {ChapterLevelCounter} from './markdown-chapter-helpers/chapter-level-counter';
 
 export function insertChapterNumber(srcText: string, chapterDepthFrom: number, chapterDepthTo: number): string {
     console.debug('markdown-toc-num.insertChapterNumber');
@@ -10,65 +10,14 @@ export function insertChapterNumber(srcText: string, chapterDepthFrom: number, c
     // 置換用のテキストを作成
     let lines = srcText.split(/\n/);
 
+    const levelCounter = new ChapterLevelCounter(chapterDepthFrom, chapterDepthTo);
+
     //エディタのテキストを置換
-    let levelCounts = [0, 0, 0, 0, 0, 0, 0];
     chapters.forEach(chapter => {
-        if (chapter.level === 1) {
-            if(chapterDepthFrom > 1 || chapterDepthTo < 1) {
-                return;
-            }
-            levelCounts[1]++;
-            levelCounts[2] = 0;
-            levelCounts[3] = 0;
-            levelCounts[4] = 0;
-            levelCounts[5] = 0;
-            levelCounts[6] = 0;
-        }
-        if (chapter.level === 2) {
-            if(chapterDepthFrom > 2 || chapterDepthTo < 2) {
-                return;
-            }
-            levelCounts[2]++;
-            levelCounts[3] = 0;
-            levelCounts[4] = 0;
-            levelCounts[5] = 0;
-            levelCounts[6] = 0;
-        }
-        if (chapter.level === 3) {
-            if(chapterDepthFrom > 3 || chapterDepthTo < 3) {
-                return;
-            }
-            levelCounts[3]++;
-            levelCounts[4] = 0;
-            levelCounts[5] = 0;
-            levelCounts[6] = 0;
-        }
-        if (chapter.level === 4) {
-            if(chapterDepthFrom > 4 || chapterDepthTo < 4) {
-                return;
-            }
-            levelCounts[4]++;
-            levelCounts[5] = 0;
-            levelCounts[6] = 0;
-        }
-        if (chapter.level === 5) {
-            if(chapterDepthFrom > 5 || chapterDepthTo < 5) {
-                return;
-            }
-            levelCounts[5]++;
-            levelCounts[6] = 0;
-        }
-        if (chapter.level === 6) {
-            if(chapterDepthFrom > 6 || chapterDepthTo < 6) {
-                return;
-            }
-            levelCounts[6]++;
-        }
-        
-        const chapterNumText = levelCounts.join('.') + '.';
-        const chapterNumTextTrimmed = chapterNumText.replace(/0+\./g, ''); 
+        levelCounter.pushNextChapter(chapter.level);
+        const chapterNumText = levelCounter.getLevelTextTrimmed();
         const line = chapter.line;
-        lines[line] = '#'.repeat(chapter.level) + ' ' + chapterNumTextTrimmed + ' ' + chapter.text;
+        lines[line] = '#'.repeat(chapter.level) + ' ' + chapterNumText + ' ' + chapter.text;
     });
 
     return lines.join('\n');

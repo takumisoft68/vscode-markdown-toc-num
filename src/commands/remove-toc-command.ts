@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import * as config from './model/configuration';
 import * as tocFinder from './model/markdown-toc-helpers/toc-position-finder';
+import * as toc from './model/markdown-toc';
 
 export function removeTocCommand(): void {
     console.debug('removeTocCommand');
@@ -23,13 +24,33 @@ export function removeTocCommand(): void {
     const tocStartLine = tocMarkLineStart;
     const tocEndLine = tocMarkLineEnd;
 
-    const tocText = '\n';
+    const tocStartLineText = tocMarkLineStart !== -1 ? doc.lineAt(tocMarkLineStart).text : '';
+    const tocEndLineText = tocMarkLineEnd !== -1 ? doc.lineAt(tocMarkLineEnd).text : '';
+
+    let newLines: string[] = [];
+    const srcLines = srcText.split(/\r\n|\n|\r/);
+    for(let i = 0; i < srcLines.length; i++)
+    {
+        if (i > tocStartLine && i < tocEndLine) {
+            // tocは新しいテキストにコピーしない
+            continue;
+        }
+        else {
+            // toc以外はコピーする
+            newLines.push(srcLines[i]);
+            continue;
+        }
+    }
+
+    const newTexts = newLines.join('\n');
+
+    // 埋め込みアンカーも削除する
+    let anchorEmbeddedText = newTexts;
+    anchorEmbeddedText = toc.removeEmbeddedAnchor(anchorEmbeddedText);
 
     //エディタ選択範囲にテキストを反映
-    const tocStartPosition = new vscode.Position(tocStartLine, doc.lineAt(tocStartLine).text.length);
-    const tocEndPosition = new vscode.Position(tocEndLine, 0);
-    const tocSelection = new vscode.Selection(tocStartPosition, tocEndPosition);
+    const allDocSelection = new vscode.Selection(new vscode.Position(0, 0), new vscode.Position(doc.lineCount - 1, 10000));
     editor.edit(edit => {
-        edit.replace(tocSelection, tocText);
+        edit.replace(allDocSelection, anchorEmbeddedText);
     });
 }

@@ -26,18 +26,30 @@ Add commands for table of contents (TOC) and chapter numbering to markdown.
 You can override them inline.
 
 ```md
-<!-- TOC tocDepthFrom:1 tocDepthTo:6 -->
+<!-- TOC tocDepth:2..3 chapterDepth:1..6 anchorMode:embed -->
 
-<!-- TOC tocDepth:1..6 -->
+<!-- TOC tocDepthFrom:2 tocDepthTo:3 chapterDepthFrom:1 chapterDepthTo:6 anchorMode:embed -->
 
-<!-- TOC chapterDepthFrom:2 chapterDepthTo:6 -->
-
-<!-- TOC chapterDepth:2..6 -->
+<!-- TOC tocDepthFrom:1 tocDepthTo:6 anchorMode:github -->
 ```
 
 ### Omit chapter in TOC
 
 In case you are seeing unexpected TOC recognition, you can add a <!-- omit in toc --> comment above the list.
+
+## Anchor Styles
+
+### VSCode & GitLab style
+
+- 
+
+### GitHub & Azure DevOps style
+
+- With this sytle, the anchor links in TOC do NOT work in VSCode markdown preview.
+
+### Embed style
+
+- 
 
 ## Release Notes
 

@@ -36,12 +36,38 @@ export function insertTocCommand(): void {
     + toc.makeTocText(srcText, current.tocDepthFrom, current.tocDepthTo, indentSize, current.anchorMode) + '\n\n'
     + tocEndLineText;
 
+    let newLines: string[] = [];
+    const srcLines = srcText.split(/\r\n|\n|\r/);
+    for(let i = 0; i < srcLines.length; i++)
+    {
+        if (i < tocStartLine || i > tocEndLine) {
+            newLines.push(srcLines[i]);
+            continue;
+        }
+        else if (i === tocStartLine) {
+            const tocLines = tocText.split(/\r\n|\n|\r/);
+            for (let n = 0; n < tocLines.length; n++) {
+                newLines.push(tocLines[n]);
+            }
+            continue;
+        }
+        else {
+            continue;
+        }
+    }
+
+    const newTexts = newLines.join('\n');
+    let anchorEmbeddedText = newTexts;
+    anchorEmbeddedText = toc.removeEmbeddedAnchor(anchorEmbeddedText);
+    if(current.anchorMode === toc.AnchorMode.embed) {
+        // 埋め込みアンカーモードの時は埋め込みアンカーも更新する
+        anchorEmbeddedText = toc.insertEmbeddedAnchor(anchorEmbeddedText, current.tocDepthFrom, current.tocDepthTo);
+    }
+
     //エディタ選択範囲にテキストを反映
-    const tocStartPosition = new vscode.Position(tocStartLine, 0);
-    const tocEndPosition = new vscode.Position(tocEndLine, doc.lineAt(tocEndLine).text.length);
-    const tocSelection = new vscode.Selection(tocStartPosition, tocEndPosition);
+    const allDocSelection = new vscode.Selection(new vscode.Position(0, 0), new vscode.Position(doc.lineCount - 1, 10000));
     editor.edit(edit => {
-        edit.replace(tocSelection, tocText);
+        edit.replace(allDocSelection, anchorEmbeddedText);
     });
 }
 

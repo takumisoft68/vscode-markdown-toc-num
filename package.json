@@ -3,7 +3,7 @@
 	"publisher": "TakumiI",
 	"displayName": "Markdown TOC & Chapter Number",
 	"description": "Create table of contents. Insert chapter numbers.",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/takumisoft68/vscode-markdown-toc-num"
@@ -89,16 +89,16 @@
 					"type": "string",
 					"description": "Anchor style.",
 					"enum": [
-						"gitlab",
-						"vscode",
+						"vscode,gitlab",
+						"github,azure",
 						"none"
 					],
 					"enumDescriptions": [
-						"Compatible with GitLab.",
-						"Compatible with VSCode.",
+						"Compatible with VSCode & GitLab.",
+						"Compatible with GitHub & Azure Repos.",
 						"Not insert anchor."
 					],
-					"default": "vscode"
+					"default": "vscode,gitlab"
 				}
 			}
 		}
