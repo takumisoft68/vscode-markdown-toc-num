@@ -17,7 +17,12 @@ export function insertChapterNumber(srcText: string, chapterDepthFrom: number, c
         levelCounter.pushNextChapter(chapter.level);
         const chapterNumText = levelCounter.getLevelTextTrimmed();
         const line = chapter.line;
-        lines[line] = '#'.repeat(chapter.level) + ' ' + chapterNumText + ' ' + chapter.text;
+        if(chapterNumText === "") {
+            lines[line] = '#'.repeat(chapter.level) + ' ' + chapter.text;
+        }
+        else {
+            lines[line] = '#'.repeat(chapter.level) + ' ' + chapterNumText + ' ' + chapter.text;
+        }
     });
 
     return lines.join('\n');
