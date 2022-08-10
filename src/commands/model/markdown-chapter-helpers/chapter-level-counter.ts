@@ -12,6 +12,12 @@ export class ChapterLevelCounter {
     pushNextChapter(level: number) {
         if (level === 1) {
             if(this.chapterDepthFrom > 1 || this.chapterDepthTo < 1) {
+                this.levelCounts[1] = 0;
+                this.levelCounts[2] = 0;
+                this.levelCounts[3] = 0;
+                this.levelCounts[4] = 0;
+                this.levelCounts[5] = 0;
+                this.levelCounts[6] = 0;
                 return;
             }
             this.levelCounts[1]++;
@@ -23,6 +29,11 @@ export class ChapterLevelCounter {
         }
         if (level === 2) {
             if(this.chapterDepthFrom > 2 || this.chapterDepthTo < 2) {
+                this.levelCounts[2] = 0;
+                this.levelCounts[3] = 0;
+                this.levelCounts[4] = 0;
+                this.levelCounts[5] = 0;
+                this.levelCounts[6] = 0;    
                 return;
             }
             this.levelCounts[2]++;
@@ -33,6 +44,10 @@ export class ChapterLevelCounter {
         }
         if (level === 3) {
             if(this.chapterDepthFrom > 3 || this.chapterDepthTo < 3) {
+                this.levelCounts[3] = 0;
+                this.levelCounts[4] = 0;
+                this.levelCounts[5] = 0;
+                this.levelCounts[6] = 0;
                 return;
             }
             this.levelCounts[3]++;
@@ -42,6 +57,9 @@ export class ChapterLevelCounter {
         }
         if (level === 4) {
             if(this.chapterDepthFrom > 4 || this.chapterDepthTo < 4) {
+                this.levelCounts[4] = 0;
+                this.levelCounts[5] = 0;
+                this.levelCounts[6] = 0;
                 return;
             }
             this.levelCounts[4]++;
@@ -50,6 +68,8 @@ export class ChapterLevelCounter {
         }
         if (level === 5) {
             if(this.chapterDepthFrom > 5 || this.chapterDepthTo < 5) {
+                this.levelCounts[5] = 0;
+                this.levelCounts[6] = 0;
                 return;
             }
             this.levelCounts[5]++;
@@ -57,6 +77,7 @@ export class ChapterLevelCounter {
         }
         if (level === 6) {
             if(this.chapterDepthFrom > 6 || this.chapterDepthTo < 6) {
+                this.levelCounts[6] = 0;
                 return;
             }
             this.levelCounts[6]++;
