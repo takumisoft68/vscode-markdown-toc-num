@@ -3,7 +3,7 @@
 	"publisher": "TakumiI",
 	"displayName": "Markdown TOC & Chapter Number",
 	"description": "Create table of contents. Insert chapter numbers.",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/takumisoft68/vscode-markdown-toc-num"
@@ -23,19 +23,19 @@
 		"commands": [
 			{
 				"command": "markdown-toc-num.insertToc",
-				"title": "markdown-toc-num: Insert/Update table of contents"
+				"title": "markdown-toc-num: Insert/Update TOC"
 			},
 			{
 				"command": "markdown-toc-num.removeToc",
-				"title": "markdown-toc-num: Remove table of contents"
+				"title": "markdown-toc-num: Remove TOC"
 			},
 			{
 				"command": "markdown-toc-num.insertChapterNumber",
-				"title": "markdown-toc-num: Insert/Update chapter number"
+				"title": "markdown-toc-num: Insert/Update Chapter Number"
 			},
 			{
 				"command": "markdown-toc-num.removeChapterNumber",
-				"title": "markdown-toc-num: Remove chapter number"
+				"title": "markdown-toc-num: Remove Chapter Number"
 			}
 		],
 		"menus": {

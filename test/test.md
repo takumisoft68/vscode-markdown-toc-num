@@ -1,4 +1,4 @@
-﻿#  Markdown TOC & Chapter Number
+﻿# Markdown TOC & Chapter Number
 
 マークダウンに目次を作成する拡張機能
 
