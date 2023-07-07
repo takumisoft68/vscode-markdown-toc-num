@@ -10,11 +10,24 @@ export function insertChapterNumber(srcText: string, chapterDepthFrom: number, c
     // 置換用のテキストを作成
     let lines = srcText.split(/\n/);
 
-    const levelCounter = new ChapterLevelCounter(chapterDepthFrom, chapterDepthTo);
+    const levelCounter = new ChapterLevelCounter();
 
     //エディタのテキストを置換
     chapters.forEach(chapter => {
-        levelCounter.pushNextChapter(chapter.level);
+        if (chapter.level < chapterDepthFrom) {
+            // 範囲指定外
+            //levelCounter.resetCounter();
+            return;
+        }
+        if (chapter.level > chapterDepthTo) {
+            // 範囲指定外
+            return;
+        }
+
+        // chapterDepthFrom設定の分のオフセットを換算する
+        let levelOffseted = chapter.level - chapterDepthFrom + 1;
+
+        levelCounter.pushNextChapter(levelOffseted);
         const chapterNumText = levelCounter.getLevelTextTrimmed();
         const line = chapter.line;
         if(chapterNumText === "") {
