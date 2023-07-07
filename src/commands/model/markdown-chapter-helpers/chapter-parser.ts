@@ -54,7 +54,7 @@ export function parseChapter(text: string): ChapterNode[] {
         }
         else if (line.startsWith('###### ')) {
             let node: ChapterNode = {
-                level: 6, text: line.replace('$###### ', '').trim(), line: linenum
+                level: 6, text: line.replace(/^###### /, '').trim(), line: linenum
             };
             chapters.push(node);
         }
