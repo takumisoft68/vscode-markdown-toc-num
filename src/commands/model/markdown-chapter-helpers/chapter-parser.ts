@@ -18,8 +18,19 @@ export function parseChapter(text: string): ChapterNode[] {
     const lines = text.split(/\r\n|\n|\r/);
     let linenum = -1;
 
+    let inCodeBlock = false;
+
     lines.forEach(line => {
         linenum += 1;
+
+        // コードブロック内は無視する
+        if (line.trimStart().startsWith("```")) {
+            inCodeBlock = !inCodeBlock;
+        }
+        if (inCodeBlock) {
+            return;
+        }
+
         let isOmit = false;
         if (line.trimEnd().endsWith('<!-- omit in toc -->')) {
             isOmit = true;
