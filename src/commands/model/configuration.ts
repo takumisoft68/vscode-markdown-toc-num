@@ -77,11 +77,14 @@ function getConfig(defaultConfig: Config): Config {
 
     let anchorModeText = <string>vscode.workspace.getConfiguration('"markdown-toc-num').get('anchorMode');
     let anchorMode = defaultConfig.anchorMode;
-    if(anchorModeText === 'vscode,gitlab') {
+    if(anchorModeText === 'vscode,gitlab' || anchorModeText === 'vscode' || anchorModeText === 'gitlab') {
         anchorMode = AnchorMode.vscode_gitlab;
     }
-    if(anchorModeText === 'github,azure') {
-        anchorMode = AnchorMode.github_azure;
+    if(anchorModeText === 'github') {
+        anchorMode = AnchorMode.github;
+    }
+    if(anchorModeText === 'azure') {
+        anchorMode = AnchorMode.azure;
     }
     if(anchorModeText === 'embed') {
         anchorMode = AnchorMode.embed;
@@ -176,9 +179,6 @@ function parseConfig(tocHeader: string, defaultConfig: Config) {
             if(anchorModeText === 'vscode,gitlab') {
                 anchorMode = AnchorMode.vscode_gitlab;
             }
-            else if(anchorModeText === 'github,azure') {
-                anchorMode = AnchorMode.github_azure;
-            }
             else if(anchorModeText === 'vscode') {
                 anchorMode = AnchorMode.vscode_gitlab;
             }
@@ -186,10 +186,10 @@ function parseConfig(tocHeader: string, defaultConfig: Config) {
                 anchorMode = AnchorMode.vscode_gitlab;
             }
             else if(anchorModeText === 'github') {
-                anchorMode = AnchorMode.github_azure;
+                anchorMode = AnchorMode.github;
             }
             else if(anchorModeText === 'azure') {
-                anchorMode = AnchorMode.github_azure;
+                anchorMode = AnchorMode.azure;
             }
             else if(anchorModeText === 'embed') {
                 anchorMode = AnchorMode.embed;

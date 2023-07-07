@@ -19,14 +19,14 @@ Add commands for table of contents (TOC) and chapter numbering to markdown.
 | --------------------------------- | ------------------------------------------------------------------------------------------------------ | ------ | ------- |
 | markdown-toc-num.tocDepthFrom     | TOC depth control, from [1-6]                                                                          | number | 2       |
 | markdown-toc-num.tocDepthTo       | TOC depth control, to [1-6]                                                                            | number | 3       |
-| markdown-toc-num.chapterDepthFrom | Chapter numbering depth control, from [1-6]                                                            | number | 1       |
+| markdown-toc-num.chapterDepthFrom | Chapter numbering depth control, from [1-6]                                                            | number | 2       |
 | markdown-toc-num.chapterDepthTo   | Chapter numbering depth control, to [1-6]                                                              | number | 6       |
-| markdown-toc-num.anchorMode       | Anchor style [`vscode,gitlab`, `vscode`, `gitlab`, `github,azure`, `github`, `azure`, `embed`, `none`] | string | vscode  |
+| markdown-toc-num.anchorMode       | Anchor style [`vscode,gitlab`, `vscode`, `gitlab`, `github`, `azure`, `embed`, `none`] | string | vscode  |
 
 You can override them inline.
 
 ```md
-<!-- TOC tocDepth:2..3 chapterDepth:1..6 anchorMode:embed -->
+<!-- TOC tocDepth:2..3 chapterDepth:2..6 anchorMode:embed -->
 
 <!-- TOC tocDepthFrom:2 tocDepthTo:3 chapterDepthFrom:1 chapterDepthTo:6 anchorMode:embed -->
 
@@ -46,47 +46,69 @@ In case you are seeing unexpected TOC recognition, you can add a <!-- omit in to
 With this style, anchors are started with `#`
 
 ```md
-# 1. title
+# title
 
-<!-- TOC tocDepth:1..4 chapterDepth:1..6 anchorMode:vscode,gitlab -->
+<!-- TOC tocDepth:2..3 chapterDepth:2..6 anchorMode:vscode,gitlab -->
 
-- [1. title](#1-title)
-    - [1.1. AAA](#11-aaa)
-        - [1.1.1. AAA-1](#111-aaa-1)
-        - [1.1.2. AAA-2](#112-aaa-2)
+- [1. AAA](#1-aaa)
+    - [1.1. AAA-1](#11-aaa-1)
+    - [1.2. AAA-2](#12-aaa-2)
 
 <!-- /TOC -->
 
-## 1.1. AAA
+## 1. AAA
 
-### 1.1.1. AAA-1
+### 1.1. AAA-1
 
-### 1.1.2. AAA-2
+### 1.2. AAA-2
 ```
 
-### 1.3.2. GitHub & Azure DevOps style
+### 1.3.2. GitHub style
 
 With this style, anchors are started with `#user-content-`.
 
 - With this sytle, the anchor links in TOC do NOT work in VSCode markdown preview.
 
 ```md
-# 1. title
+# title
 
-<!-- TOC tocDepth:1..4 chapterDepth:1..6 anchorMode:github,azure -->
+<!-- TOC tocDepth:2..3 chapterDepth:2..6 anchorMode:github -->
 
-- [1. title](#user-content-1-title)
-    - [1.1. AAA](#user-content-11-aaa)
-        - [1.1.1. AAA-1](#user-content-111-aaa-1)
-        - [1.1.2. AAA-2](#user-content-112-aaa-2)
+- [1. AAA](#user-content-1-aaa)
+    - [1.1. AAA-1](#user-content-11-aaa-1)
+    - [1.2. AAA-2](#user-content-12-aaa-2)
 
 <!-- /TOC -->
 
-## 1.1. AAA
+## 1. AAA
 
-### 1.1.1. AAA-1
+### 1.1. AAA-1
 
-### 1.1.2. AAA-2
+### 1.2. AAA-2
+```
+
+### 1.3.2. Azure DevOps style
+
+With this style, anchors are started with `#user-content-`.
+
+- With this sytle, the anchor links in TOC do NOT work in VSCode markdown preview.
+
+```md
+# title
+
+<!-- TOC tocDepth:2..3 chapterDepth:2..6 anchorMode:azure -->
+
+- [1. AAA](#user-content-1.-aaa)
+    - [1.1. AAA-1](#user-content-1.1.-aaa-1)
+    - [1.2. AAA-2](#user-content-1.2.-aaa-2)
+
+<!-- /TOC -->
+
+## 1. AAA
+
+### 1.1. AAA-1
+
+### 1.2. AAA-2
 ```
 
 ### 1.3.3. Embed style
@@ -94,28 +116,27 @@ With this style, anchors are started with `#user-content-`.
 With this style, html div elements are inserted automatically.
 
 ```md
-<div id="toc-1--title" />
+<div id="toc-title" />
 
-# 1. title
+# title
 
-<!-- TOC tocDepth:1..4 chapterDepth:1..6 anchorMode:embed -->
+<!-- TOC tocDepth:2..3 chapterDepth:2..6 anchorMode:embed -->
 
-- [1. title](#toc-1--title)
-    - [1.1. AAA](#toc-1-1--aaa)
-        - [1.1.1. AAA-1](#toc-1-1-1--aaa-1)
-        - [1.1.2. AAA-2](#toc-1-1-2--aaa-2)
+- [1. AAA](#toc-1--aaa)
+    - [1.1. AAA-1](#toc-1-1--aaa-1)
+    - [1.2. AAA-2](#toc-1-2--aaa-2)
 
 <!-- /TOC -->
 
-<div id="toc-1-1--aaa" />
+<div id="toc-1--aaa" />
 
 ## 1.1. AAA
 
-<div id="toc-1-1-1--aaa-1" />
+<div id="toc-1-1--aaa-1" />
 
 ### 1.1.1. AAA-1
 
-<div id="toc-1-1-2--aaa-2" />
+<div id="toc-1-2--aaa-2" />
 
 ### 1.1.2. AAA-2
 ```

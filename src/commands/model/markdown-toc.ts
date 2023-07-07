@@ -4,7 +4,8 @@ import {ChapterLevelCounter} from './markdown-chapter-helpers/chapter-level-coun
 
 export const enum AnchorMode {
     vscode_gitlab,
-    github_azure,
+    github,
+    azure,
     embed,
     none
 };
@@ -29,9 +30,14 @@ export function makeTocText(srcText: string, depthFrom: number, depthTo: number,
             const anchor = makeAnchorVscodeGitLab(chapter.text);
             line += `(${anchor})`;
         }
-        else if (anchorMode === AnchorMode.github_azure) {
+        else if (anchorMode === AnchorMode.github) {
             line += `- [${chapter.text}]`;
-            const anchor = makeAnchorGithubAzure(chapter.text);
+            const anchor = makeAnchorGithub(chapter.text);
+            line += `(${anchor})`;
+        }
+        else if (anchorMode === AnchorMode.azure) {
+            line += `- [${chapter.text}]`;
+            const anchor = makeAnchorAzure(chapter.text);
             line += `(${anchor})`;
         }
         else if (anchorMode === AnchorMode.embed) {
@@ -74,7 +80,7 @@ function makeAnchorVscodeGitLab(text: string): string {
     return '#' + anchor;
 }
 
-function makeAnchorGithubAzure(text: string): string {
+function makeAnchorGithub(text: string): string {
     // アンカー作成スキーム
     // 1. アルファベットは小文字に変換
     // 2. !@#$%^&*()_+={}][|\"':;?/>.<,`~ の文字は削除
@@ -88,6 +94,32 @@ function makeAnchorGithubAzure(text: string): string {
     anchor = anchor.split('　').join(' ');
 
     const removeList = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "{", "}", "]", "[", "|", "\\", "\"", "'", ":", ";", "?", "/", ">", ".", "<", ",", "`", "~"];
+    removeList.forEach(v => {
+        anchor = anchor.split(v).join('');
+    });
+
+    while(~anchor.indexOf('  ')) {
+        anchor = anchor.split('  ').join(' ');
+    }
+    anchor = anchor.split(' ').join('-');
+
+    return '#user-content-' + anchor;
+}
+
+function makeAnchorAzure(text: string): string {
+    // アンカー作成スキーム
+    // 1. アルファベットは小文字に変換
+    // 2. !@#$%^&*()_+={}][|\"':;?/><,`~ の文字は削除
+    // 3. スペースの連続はスペース1つに変換
+    // 4. スペースは - に変換
+    // 5. 日本語などアルファベット以外の文字はそのまま
+    // 6. 先頭に "user-content-" を付与
+    let anchor = text;
+
+    anchor = anchor.toLowerCase();
+    anchor = anchor.split('　').join(' ');
+
+    const removeList = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "{", "}", "]", "[", "|", "\\", "\"", "'", ":", ";", "?", "/", ">", "<", ",", "`", "~"];
     removeList.forEach(v => {
         anchor = anchor.split(v).join('');
     });
