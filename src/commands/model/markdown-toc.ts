@@ -61,16 +61,15 @@ export function makeTocText(srcText: string, depthFrom: number, depthTo: number,
 function makeAnchorVscodeGitLab(text: string): string {
     // アンカー作成スキーム
     // 1. アルファベットは小文字に変換
-    // 2. !@#$%^&*()_+={}][|\"':;?/>.<,`~ の文字は削除
+    // 2. !@#$%^&*()+={}][|\"':;?/>.<,`~ の文字は削除
     // 3. スペースの連続はスペース1つに変換
     // 4. スペースは - に変換
     // 5. 日本語などアルファベット以外の文字はそのまま
     let anchor = text;
 
     anchor = anchor.toLowerCase();
-    anchor = anchor.split('　').join(' ');
 
-    const removeList = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "{", "}", "]", "[", "|", "\\", "\"", "'", ":", ";", "?", "/", ">", ".", "<", ",", "`", "~"];
+    const removeList = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "+", "=", "{", "}", "]", "[", "|", "\\", "\"", "'", ":", ";", "?", "/", ">", ".", "<", ",", "`", "~", "：", "！", "？", "。", "、", "（", "）"];
     removeList.forEach(v => {
         anchor = anchor.split(v).join('');
     });
@@ -79,6 +78,10 @@ function makeAnchorVscodeGitLab(text: string): string {
         anchor = anchor.split('  ').join(' ');
     }
     anchor = anchor.split(' ').join('-');
+    while (~anchor.indexOf('　　')) {
+        anchor = anchor.split('　　').join('　');
+    }
+    anchor = anchor.split('　').join('-');
 
     return '#' + anchor;
 }
@@ -86,7 +89,7 @@ function makeAnchorVscodeGitLab(text: string): string {
 function makeAnchorGithub(text: string): string {
     // アンカー作成スキーム
     // 1. アルファベットは小文字に変換
-    // 2. !@#$%^&*()_+={}][|\"':;?/>.<,`~ の文字は削除
+    // 2. !@#$%^&*()_+={}][|\"':;?/>.<,`~ の文字、全角の記号と句読点は削除
     // 3. スペースの連続はスペース1つに変換
     // 4. スペースは - に変換
     // 5. 日本語などアルファベット以外の文字はそのまま
@@ -94,9 +97,8 @@ function makeAnchorGithub(text: string): string {
     let anchor = text;
 
     anchor = anchor.toLowerCase();
-    anchor = anchor.split('　').join(' ');
 
-    const removeList = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "{", "}", "]", "[", "|", "\\", "\"", "'", ":", ";", "?", "/", ">", ".", "<", ",", "`", "~"];
+    const removeList = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "+", "=", "{", "}", "]", "[", "|", "\\", "\"", "'", ":", ";", "?", "/", ">", ".", "<", ",", "`", "~", '　', "：", "！", "？", "。", "、", "（", "）", "・", "＆", "％", "＜", "＞"];
     removeList.forEach(v => {
         anchor = anchor.split(v).join('');
     });
@@ -112,7 +114,7 @@ function makeAnchorGithub(text: string): string {
 function makeAnchorAzure(text: string): string {
     // アンカー作成スキーム
     // 1. アルファベットは小文字に変換
-    // 2. !@#$%^&*()_+={}][|\"':;?/><,`~ の文字は削除
+    // 2. 記号はURLエンコード
     // 3. スペースの連続はスペース1つに変換
     // 4. スペースは - に変換
     // 5. 日本語などアルファベット以外の文字はそのまま
@@ -120,12 +122,28 @@ function makeAnchorAzure(text: string): string {
     let anchor = text;
 
     anchor = anchor.toLowerCase();
-    anchor = anchor.split('　').join(' ');
 
-    const removeList = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "{", "}", "]", "[", "|", "\\", "\"", "'", ":", ";", "?", "/", ">", "<", ",", "`", "~"];
-    removeList.forEach(v => {
-        anchor = anchor.split(v).join('');
-    });
+    anchor = anchor.split("%").join("%25");
+    anchor = anchor.split("@").join("%40");
+    anchor = anchor.split("#").join("%23");
+    anchor = anchor.split("$").join("%24");
+    anchor = anchor.split("^").join("%5E");
+    anchor = anchor.split("+").join("%2B");
+    anchor = anchor.split("=").join("%3D");
+    anchor = anchor.split("{").join("%7B");
+    anchor = anchor.split("}").join("%7D");
+    anchor = anchor.split("]").join("%5D");
+    anchor = anchor.split("[").join("%5B");
+    anchor = anchor.split("|").join("%7C");
+    anchor = anchor.split("'").join("%27");
+    anchor = anchor.split(";").join("%3B");
+    anchor = anchor.split(",").join("%2C");
+    anchor = anchor.split("`").join("%60");
+    anchor = anchor.split(":").join("%3A");
+    anchor = anchor.split("?").join("%3F");
+    anchor = anchor.split("&").join("%26");
+    anchor = anchor.split("\\").join("%5C");
+    anchor = anchor.split("　").join("-");
 
     while (~anchor.indexOf('  ')) {
         anchor = anchor.split('  ').join(' ');
