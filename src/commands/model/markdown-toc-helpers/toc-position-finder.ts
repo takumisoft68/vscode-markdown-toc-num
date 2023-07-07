@@ -10,8 +10,18 @@ export function getTocPosition(text: string): [number, number, string] {
 
     const lines = text.split(/\r\n|\n|\r/);
 
+    let inCodeBlock = false;
+
     for (let lineNum = 0; lineNum < lines.length; lineNum++) {
         let lineText = lines[lineNum];
+
+        // コードブロック内は無視する
+        if (lineText.trimStart().startsWith("```")) {
+            inCodeBlock = !inCodeBlock;
+        }
+        if (inCodeBlock) {
+            continue;
+        }
 
         if (startLine === -1 && lineText.startsWith('<!-- TOC ')) {
             startLine = lineNum;
