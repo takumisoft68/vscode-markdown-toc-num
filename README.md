@@ -39,6 +39,23 @@ You can override them inline.
 
 In case you are seeing unexpected TOC recognition, you can add a <!-- omit in toc --> comment above the list.
 
+```md
+# title
+
+<!-- TOC tocDepth:2..3 chapterDepth:2..6 anchorMode:github -->
+
+- [1. AAA](#user-content-1-aaa)
+    - [1.2. AAA-2](#user-content-12-aaa-2)
+
+<!-- /TOC -->
+
+## 1. AAA
+
+### 1.1. AAA-1 <!-- omit in toc -->
+
+### 1.2. AAA-2
+```
+
 ## 1.3. Anchor Styles
 
 ### 1.3.1. VSCode & GitLab style

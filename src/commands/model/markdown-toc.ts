@@ -1,5 +1,5 @@
 import * as chapterParser from './markdown-chapter-helpers/chapter-parser';
-import {ChapterLevelCounter} from './markdown-chapter-helpers/chapter-level-counter';
+import { ChapterLevelCounter } from './markdown-chapter-helpers/chapter-level-counter';
 
 
 export const enum AnchorMode {
@@ -15,11 +15,14 @@ export function makeTocText(srcText: string, depthFrom: number, depthTo: number,
 
     // チャプターをパースする
     const chapters = chapterParser.parseChapter(srcText);
-    
+
     let lines: string[] = [];
     chapters.forEach(chapter => {
         const level = chapter.level;
         if (level < depthFrom || level > depthTo) {
+            return;
+        }
+        if (chapter.omitInToc) {
             return;
         }
         const indent = level - depthFrom;
@@ -51,7 +54,7 @@ export function makeTocText(srcText: string, depthFrom: number, depthTo: number,
         lines.push(line);
     });
     const tocText = lines.join('\n');
-    
+
     return tocText;
 }
 
@@ -72,7 +75,7 @@ function makeAnchorVscodeGitLab(text: string): string {
         anchor = anchor.split(v).join('');
     });
 
-    while(~anchor.indexOf('  ')) {
+    while (~anchor.indexOf('  ')) {
         anchor = anchor.split('  ').join(' ');
     }
     anchor = anchor.split(' ').join('-');
@@ -98,7 +101,7 @@ function makeAnchorGithub(text: string): string {
         anchor = anchor.split(v).join('');
     });
 
-    while(~anchor.indexOf('  ')) {
+    while (~anchor.indexOf('  ')) {
         anchor = anchor.split('  ').join(' ');
     }
     anchor = anchor.split(' ').join('-');
@@ -124,7 +127,7 @@ function makeAnchorAzure(text: string): string {
         anchor = anchor.split(v).join('');
     });
 
-    while(~anchor.indexOf('  ')) {
+    while (~anchor.indexOf('  ')) {
         anchor = anchor.split('  ').join(' ');
     }
     anchor = anchor.split(' ').join('-');
@@ -150,7 +153,7 @@ function makeAnchorEmbed(text: string): string {
         anchor = anchor.split(v).join('');
     });
 
-    while(~anchor.indexOf('  ')) {
+    while (~anchor.indexOf('  ')) {
         anchor = anchor.split('  ').join(' ');
     }
     anchor = anchor.split(' ').join('-');
@@ -165,7 +168,7 @@ export function insertEmbeddedAnchor(srcText: string, depthFrom: number, depthTo
 
     // チャプターをパースする
     const chapters = chapterParser.parseChapter(srcText);
-    if(chapters.length === 0){
+    if (chapters.length === 0) {
         // チャプターが見つからなければそのままのテキストを返す
         return srcText;
     }
@@ -176,21 +179,20 @@ export function insertEmbeddedAnchor(srcText: string, depthFrom: number, depthTo
     let nextChapterNum = 0;
 
 
-    for(let i = 0; i < lines.length; i++)
-    {
-        if(nextChapterNum >= chapters.length) {
+    for (let i = 0; i < lines.length; i++) {
+        if (nextChapterNum >= chapters.length) {
             // もう後ろにヘッダーは無い
             newLines.push(lines[i]);
             continue;
         }
 
         let nextChapter = chapters[nextChapterNum];
-        while(nextChapter.level < depthFrom || nextChapter.level > depthTo) {
+        while (nextChapter.level < depthFrom || nextChapter.level > depthTo) {
             nextChapterNum = nextChapterNum + 1;
             nextChapter = chapters[nextChapterNum];
         }
 
-        if(i < nextChapter.line) {
+        if (i < nextChapter.line) {
             // 次のヘッダーまでのコンテンツ行
             newLines.push(lines[i]);
             continue;
@@ -212,7 +214,7 @@ export function insertEmbeddedAnchor(srcText: string, depthFrom: number, depthTo
 
 function replaceAll(srcText: string, from: string, to: string) {
     let replaced = srcText;
-    while(~replaced.indexOf(from)) {
+    while (~replaced.indexOf(from)) {
         replaced = replaced.replace(from, to);
     }
     return replaced;
@@ -226,16 +228,15 @@ export function removeEmbeddedAnchor(srcText: string): string {
     let newLines: string[] = [];
 
     let isNextLineOfAnchor = false;
-    for(let i = 0; i < lines.length; i++)
-    {
-        if(isNextLineOfAnchor) {
+    for (let i = 0; i < lines.length; i++) {
+        if (isNextLineOfAnchor) {
             isNextLineOfAnchor = false;
-            if(lines[i].trim() !== '') {
+            if (lines[i].trim() !== '') {
                 newLines.push(lines[i]);
             }
             continue;
         }
-        if(lines[i].startsWith('<div id="toc-')){
+        if (lines[i].startsWith('<div id="toc-')) {
             isNextLineOfAnchor = true;
             continue;
         }

@@ -1,6 +1,6 @@
 ﻿# title
 
-<!-- TOC tocDepth:2..3 chapterDepth:2..6 anchorMode:github -->
+<!-- TOC tocDepth:2..4 chapterDepth:2..6 anchorMode:github -->
 
 - [1. AAA](#user-content-1-aaa)
     - [1.1. AAA-1](#user-content-11-aaa-1)
@@ -8,6 +8,7 @@
 - [2. BBB](#user-content-2-bbb)
     - [2.1. BBB-1](#user-content-21-bbb-1)
     - [2.2. BBB-1](#user-content-22-bbb-1)
+        - [2.2.1. BBB-1](#user-content-221-bbb-1)
     - [2.3. BBB-1](#user-content-23-bbb-1)
     - [2.4. BBB-1](#user-content-24-bbb-1)
     - [2.5. BBB-1](#user-content-25-bbb-1)
@@ -22,6 +23,7 @@
 - [1. BBB](#user-content-1-bbb)
     - [1.1. BBB-1](#user-content-11-bbb-1)
     - [1.2. BBB-1](#user-content-12-bbb-1)
+        - [1.2.1. BBB-1](#user-content-121-bbb-1)
     - [1.3. BBB-1](#user-content-13-bbb-1)
     - [1.4. BBB-1](#user-content-14-bbb-1)
     - [1.5. BBB-1](#user-content-15-bbb-1)
@@ -40,6 +42,7 @@
 
 ### 2.2. BBB-1
 
+<!-- omit in toc -->
 #### 2.2.1. BBB-1
 
 ##### 2.2.1.1. BBB-1
