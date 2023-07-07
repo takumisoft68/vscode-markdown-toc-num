@@ -2,6 +2,13 @@
 
 All notable changes to the "markdown-toc-num" extension will be documented in this file.
 
+## v0.2.0
+
+- [fix] anchor generation
+- [fix] wrong handling of block code
+- [fix] omit attribute
+- [fix] wrong handling of 6 level chapter
+
 ## v0.1.1
 
 - [fix] spaces too much before chapter text

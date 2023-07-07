@@ -1,19 +1,19 @@
-# 1. Markdown TOC & Chapter Number
+# Markdown TOC & Chapter Number
 
 Add commands for table of contents (TOC) and chapter numbering to markdown.
 
-## 1.1. Features
+## 1. Features
 
 - Add command to generate a table of contents (TOC)
 - Add command to add chapter numbers
 - Control each depth independently
 - Insert anchor in TOC
 
-## 1.2. Demo
+## 2. Demo
 
 ![demo](images/insert.gif)
 
-### 1.2.1. Configuration
+### 2.1. Configuration
 
 | Configuration ID                  | Description                                                                                            | Type   | Default |
 | --------------------------------- | ------------------------------------------------------------------------------------------------------ | ------ | ------- |
@@ -33,9 +33,9 @@ You can override them inline.
 <!-- TOC tocDepthFrom:1 tocDepthTo:6 anchorMode:github -->
 ```
 
-## Supplementary functions
+## 3. Supplementary functions
 
-### 1.2.2. Omit chapter in TOC
+### 3.1. Omit chapter in TOC
 
 In case you are seeing unexpected TOC recognition, you can add a <!-- omit in toc --> comment above the list.
 
@@ -56,9 +56,9 @@ In case you are seeing unexpected TOC recognition, you can add a <!-- omit in to
 ### 1.2. AAA-2
 ```
 
-## 1.3. Anchor Styles
+## 4. Anchor Styles
 
-### 1.3.1. VSCode & GitLab style
+### 4.1. VSCode & GitLab style
 
 With this style, anchors are started with `#`
 
@@ -80,7 +80,7 @@ With this style, anchors are started with `#`
 ### 1.2. AAA-2
 ```
 
-### 1.3.2. GitHub style
+### 4.2. GitHub style
 
 With this style, anchors are started with `#user-content-`.
 
@@ -104,7 +104,7 @@ With this style, anchors are started with `#user-content-`.
 ### 1.2. AAA-2
 ```
 
-### 1.3.2. Azure DevOps style
+### 4.3. Azure DevOps style
 
 With this style, anchors are started with `#user-content-`.
 
@@ -128,7 +128,7 @@ With this style, anchors are started with `#user-content-`.
 ### 1.2. AAA-2
 ```
 
-### 1.3.3. Embed style
+### 4.4. Embed style
 
 With this style, html div elements are inserted automatically.
 
@@ -158,15 +158,15 @@ With this style, html div elements are inserted automatically.
 ### 1.1.2. AAA-2
 ```
 
-## 1.4. Release Notes
+## 5. Release Notes
 
 - See [changelog](CHANGELOG.md).
 
-## 1.5. Links
+## 6. Links
 
 - [Source Code](https://github.com/takumisoft68/vscode-markdown-toc-num)
 - [Marketplace](https://marketplace.visualstudio.com/items?itemName=TakumiI.markdown-toc-num)
 
-## 1.6. License
+## 7. License
 
 Apache 2.0, See [LICENSE](LICENSE) for more information.
