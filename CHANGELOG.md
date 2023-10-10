@@ -4,7 +4,8 @@ All notable changes to the "markdown-toc-num" extension will be documented in th
 
 ## v0.2.1
 
-- [fix] configuration enum values
+- [fix] configuration enum values (#10)
+- [fix] shorten context menu item name (#7)
 
 ## v0.2.0
 

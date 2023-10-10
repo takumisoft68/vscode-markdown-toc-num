@@ -13,6 +13,9 @@ Add commands for table of contents (TOC) and chapter numbering to markdown.
 
 ![demo](images/insert.gif)
 
+This gif animation is from the previous version.  
+The menu names are different from the current version.
+
 ### 2.1. Configuration
 
 | Configuration ID                  | Description                                                                            | Type   | Default |

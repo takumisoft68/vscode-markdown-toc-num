@@ -23,19 +23,19 @@
 		"commands": [
 			{
 				"command": "markdown-toc-num.insertToc",
-				"title": "markdown-toc-num: Insert/Update TOC"
+				"title": "TOC: Insert/Update (markdown-toc-num)"
 			},
 			{
 				"command": "markdown-toc-num.removeToc",
-				"title": "markdown-toc-num: Remove TOC"
+				"title": "TOC: Remove (markdown-toc-num)"
 			},
 			{
 				"command": "markdown-toc-num.insertChapterNumber",
-				"title": "markdown-toc-num: Insert/Update Chapter Number"
+				"title": "Chapter num.: Insert/Update (markdown-toc-num)"
 			},
 			{
 				"command": "markdown-toc-num.removeChapterNumber",
-				"title": "markdown-toc-num: Remove Chapter Number"
+				"title": "Chapter num.: Remove (markdown-toc-num)"
 			}
 		],
 		"menus": {
