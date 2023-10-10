@@ -64,10 +64,10 @@ export function getDefaultConfig(): Config {
  */
 function getConfig(defaultConfig: Config): Config {
     // get configurations
-    let tocDepthFrom = <number>vscode.workspace.getConfiguration('"markdown-toc-num').get('tocDepthFrom');
-    let tocDepthTo = <number>vscode.workspace.getConfiguration('"markdown-toc-num').get('tocDepthTo');
-    let chapterDepthFrom = <number>vscode.workspace.getConfiguration('"markdown-toc-num').get('chapterDepthFrom');
-    let chapterDepthTo = <number>vscode.workspace.getConfiguration('"markdown-toc-num').get('chapterDepthTo');
+    let tocDepthFrom = <number>vscode.workspace.getConfiguration('markdown-toc-num').get('tocDepthFrom');
+    let tocDepthTo = <number>vscode.workspace.getConfiguration('markdown-toc-num').get('tocDepthTo');
+    let chapterDepthFrom = <number>vscode.workspace.getConfiguration('markdown-toc-num').get('chapterDepthFrom');
+    let chapterDepthTo = <number>vscode.workspace.getConfiguration('markdown-toc-num').get('chapterDepthTo');
 
     tocDepthFrom = tocDepthFrom === undefined ? defaultConfig.tocDepthFrom : fixInRange(tocDepthFrom, tocDepthFromMin, tocDepthFromMax);
     tocDepthTo = tocDepthTo === undefined ? defaultConfig.tocDepthTo : fixInRange(tocDepthTo, tocDepthToMin, tocDepthToMax);
@@ -75,7 +75,7 @@ function getConfig(defaultConfig: Config): Config {
     chapterDepthTo = chapterDepthTo === undefined ? defaultConfig.chapterDepthTo : fixInRange(chapterDepthTo, chapterDepthToMin, chapterDepthToMax);
 
 
-    let anchorModeText = <string>vscode.workspace.getConfiguration('"markdown-toc-num').get('anchorMode');
+    let anchorModeText = <string>vscode.workspace.getConfiguration('markdown-toc-num').get('anchorMode');
     let anchorMode = defaultConfig.anchorMode;
     if(anchorModeText === 'vscode,gitlab' || anchorModeText === 'vscode' || anchorModeText === 'gitlab') {
         anchorMode = AnchorMode.vscode_gitlab;
