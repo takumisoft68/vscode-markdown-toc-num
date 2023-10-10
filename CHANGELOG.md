@@ -6,6 +6,7 @@ All notable changes to the "markdown-toc-num" extension will be documented in th
 
 - [fix] not working workspace settings (#11)
 - [fix] configuration enum values (#10)
+- [fix] incorrect anchor for some symbols in Japanese sentence (#8)
 - [fix] shorten context menu item name (#7)
 
 ## v0.2.0
