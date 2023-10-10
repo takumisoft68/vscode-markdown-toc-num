@@ -90,12 +90,20 @@
 					"description": "Anchor style.",
 					"enum": [
 						"vscode,gitlab",
-						"github,azure",
+						"vscode",
+						"gitlab",
+						"github",
+						"azure",
+                        "embed",
 						"none"
 					],
 					"enumDescriptions": [
 						"Compatible with VSCode & GitLab.",
-						"Compatible with GitHub & Azure Repos.",
+						"Compatible with VSCode & GitLab.",
+						"Compatible with VSCode & GitLab.",
+						"Compatible with GitHub.",
+						"Compatible with Azure DevOps.",
+						"Embed html div elements automatically.",
 						"Not insert anchor."
 					],
 					"default": "vscode,gitlab"

@@ -15,18 +15,18 @@ Add commands for table of contents (TOC) and chapter numbering to markdown.
 
 ### 2.1. Configuration
 
-| Configuration ID                  | Description                                                                                            | Type   | Default |
-| --------------------------------- | ------------------------------------------------------------------------------------------------------ | ------ | ------- |
-| markdown-toc-num.tocDepthFrom     | TOC depth control, from [1-6]                                                                          | number | 2       |
-| markdown-toc-num.tocDepthTo       | TOC depth control, to [1-6]                                                                            | number | 3       |
-| markdown-toc-num.chapterDepthFrom | Chapter numbering depth control, from [1-6]                                                            | number | 2       |
-| markdown-toc-num.chapterDepthTo   | Chapter numbering depth control, to [1-6]                                                              | number | 6       |
+| Configuration ID                  | Description                                                                            | Type   | Default |
+| --------------------------------- | -------------------------------------------------------------------------------------- | ------ | ------- |
+| markdown-toc-num.tocDepthFrom     | TOC depth control, from [1-6]                                                          | number | 2       |
+| markdown-toc-num.tocDepthTo       | TOC depth control, to [1-6]                                                            | number | 3       |
+| markdown-toc-num.chapterDepthFrom | Chapter numbering depth control, from [1-6]                                            | number | 2       |
+| markdown-toc-num.chapterDepthTo   | Chapter numbering depth control, to [1-6]                                              | number | 6       |
 | markdown-toc-num.anchorMode       | Anchor style [`vscode,gitlab`, `vscode`, `gitlab`, `github`, `azure`, `embed`, `none`] | string | vscode  |
 
 You can override them inline.
 
 ```md
-<!-- TOC tocDepth:2..3 chapterDepth:2..6 anchorMode:embed -->
+<!-- TOC tocDepth:2..3 chapterDepth:2..6 anchorMode:vscode,gitlab -->
 
 <!-- TOC tocDepthFrom:2 tocDepthTo:3 chapterDepthFrom:1 chapterDepthTo:6 anchorMode:embed -->
 
@@ -60,6 +60,7 @@ In case you are seeing unexpected TOC recognition, you can add a <!-- omit in to
 
 ### 4.1. VSCode & GitLab style
 
+This style is compatible with VSCode & GitLab.  
 With this style, anchors are started with `#`
 
 ```md
@@ -82,6 +83,7 @@ With this style, anchors are started with `#`
 
 ### 4.2. GitHub style
 
+This style is compatible with GitHub.  
 With this style, anchors are started with `#user-content-`.
 
 - With this sytle, the anchor links in TOC do NOT work in VSCode markdown preview.
@@ -106,6 +108,7 @@ With this style, anchors are started with `#user-content-`.
 
 ### 4.3. Azure DevOps style
 
+This style is compatible with Azure DevOps.  
 With this style, anchors are started with `#user-content-`.
 
 - With this sytle, the anchor links in TOC do NOT work in VSCode markdown preview.
@@ -130,6 +133,7 @@ With this style, anchors are started with `#user-content-`.
 
 ### 4.4. Embed style
 
+This style is not smart, but compatible with wide platforms.  
 With this style, html div elements are inserted automatically.
 
 ```md

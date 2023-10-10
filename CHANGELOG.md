@@ -2,6 +2,10 @@
 
 All notable changes to the "markdown-toc-num" extension will be documented in this file.
 
+## v0.2.1
+
+- [fix] configuration enum values
+
 ## v0.2.0
 
 - [fix] anchor generation
