@@ -4,6 +4,7 @@ All notable changes to the "markdown-toc-num" extension will be documented in th
 
 ## v0.2.1
 
+- [fix] add keyword to omit chapter from numbering (#12)
 - [fix] not working workspace settings (#11)
 - [fix] configuration enum values (#10)
 - [fix] incorrect anchor for some symbols in Japanese sentence (#8)

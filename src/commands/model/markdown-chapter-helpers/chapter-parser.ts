@@ -6,6 +6,7 @@ export type ChapterNode = {
     level: number;
     line: number;
     omitInToc: boolean;
+    omitFromNum: boolean;
 };
 
 /**
@@ -31,43 +32,42 @@ export function parseChapter(text: string): ChapterNode[] {
             return;
         }
 
-        let isOmit = false;
-        if (line.trimEnd().endsWith('<!-- omit in toc -->')) {
-            isOmit = true;
-        }
+        const isOmitInToc = line.toLowerCase().includes('<!-- omit in toc -->');
+        const isOmitFromNum = line.toLowerCase().includes('<!-- omit from numbering -->');
+
         if (line.startsWith('# ')) {
             let node: ChapterNode = {
-                level: 1, text: line.replace(/^# /, '').trim(), line: linenum, omitInToc: isOmit
+                level: 1, text: line.replace(/^# /, '').trim(), line: linenum, omitInToc: isOmitInToc, omitFromNum: isOmitFromNum
             };
             chapters.push(node);
         }
         else if (line.startsWith('## ')) {
             let node: ChapterNode = {
-                level: 2, text: line.replace(/^## /, '').trim(), line: linenum, omitInToc: isOmit
+                level: 2, text: line.replace(/^## /, '').trim(), line: linenum, omitInToc: isOmitInToc, omitFromNum: isOmitFromNum
             };
             chapters.push(node);
         }
         else if (line.startsWith('### ')) {
             let node: ChapterNode = {
-                level: 3, text: line.replace(/^### /, '').trim(), line: linenum, omitInToc: isOmit
+                level: 3, text: line.replace(/^### /, '').trim(), line: linenum, omitInToc: isOmitInToc, omitFromNum: isOmitFromNum
             };
             chapters.push(node);
         }
         else if (line.startsWith('#### ')) {
             let node: ChapterNode = {
-                level: 4, text: line.replace(/^#### /, '').trim(), line: linenum, omitInToc: isOmit
+                level: 4, text: line.replace(/^#### /, '').trim(), line: linenum, omitInToc: isOmitInToc, omitFromNum: isOmitFromNum
             };
             chapters.push(node);
         }
         else if (line.startsWith('##### ')) {
             let node: ChapterNode = {
-                level: 5, text: line.replace(/^##### /, '').trim(), line: linenum, omitInToc: isOmit
+                level: 5, text: line.replace(/^##### /, '').trim(), line: linenum, omitInToc: isOmitInToc, omitFromNum: isOmitFromNum
             };
             chapters.push(node);
         }
         else if (line.startsWith('###### ')) {
             let node: ChapterNode = {
-                level: 6, text: line.replace(/^###### /, '').trim(), line: linenum, omitInToc: isOmit
+                level: 6, text: line.replace(/^###### /, '').trim(), line: linenum, omitInToc: isOmitInToc, omitFromNum: isOmitFromNum
             };
             chapters.push(node);
         }

@@ -23,6 +23,9 @@ export function insertChapterNumber(srcText: string, chapterDepthFrom: number, c
             // 範囲指定外
             return;
         }
+        if (chapter.omitFromNum) {
+            return;
+        }
 
         // chapterDepthFrom設定の分のオフセットを換算する
         let levelOffseted = chapter.level - chapterDepthFrom + 1;

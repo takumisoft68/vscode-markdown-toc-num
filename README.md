@@ -40,11 +40,9 @@ You can override them inline.
 
 ### 3.1. Omit chapter in TOC
 
-In case you are seeing unexpected TOC recognition, you can add a <!-- omit in toc --> comment above the list.
+You can exclude a chapter in TOC by appending <!-- omit in toc --> comment.
 
 ```md
-# title
-
 <!-- TOC tocDepth:2..3 chapterDepth:2..6 anchorMode:github -->
 
 - [1. AAA](#user-content-1-aaa)
@@ -57,6 +55,25 @@ In case you are seeing unexpected TOC recognition, you can add a <!-- omit in to
 ### 1.1. AAA-1 <!-- omit in toc -->
 
 ### 1.2. AAA-2
+```
+
+### 3.2. Omit chapter from numbering
+
+You can exclude a chapter from numbering by appending <!-- omit from numbering --> comment.  
+
+
+```md
+## 1. AAA
+
+### AAA-1 <!-- omit from numbering -->
+
+This chapter is excluded from numbering.
+
+### AAA-2 <!-- omit in toc --> <!-- omit from numbering -->
+
+`omit in toc` comment and `omit from numbering` comment can be use together.
+
+### 1.2. AAA-3
 ```
 
 ## 4. Anchor Styles
