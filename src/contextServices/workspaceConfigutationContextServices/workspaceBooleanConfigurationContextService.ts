@@ -37,7 +37,7 @@ export class WorkspaceBooleanConfigurationContextService implements IWorkspaceCo
 
     private updateContextState() {
         let showMenuInsertToc = <boolean>workspace.getConfiguration(this.configSectionDir).get(this.configSectionName);
-        console.log("set " + this.contextName + " to " + showMenuInsertToc);
+        // console.debug("set " + this.contextName + " to " + showMenuInsertToc);
         this.setState(showMenuInsertToc);
     }
 

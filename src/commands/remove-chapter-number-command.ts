@@ -4,7 +4,7 @@ import * as chapterNumber from './model/markdown-chapter-number';
 
 
 export function removeChapterNumberCommand(): void {
-    console.debug('removeChapterNumberCommand');
+    // console.debug('removeChapterNumberCommand');
     const editor = vscode.window.activeTextEditor as vscode.TextEditor;
     const doc = editor.document;
 

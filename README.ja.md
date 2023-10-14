@@ -13,50 +13,45 @@
 
 ![demo](images/insert.gif)
 
-### 2.1. 設定値
+この GIFアニメは過去バージョンのものです。
+現在のバージョンとはメニュー名が異なります。
 
-| Configuration ID                  | Description                                                                              | Type   | Default |
-| --------------------------------- | ---------------------------------------------------------------------------------------- | ------ | ------- |
-| markdown-toc-num.tocDepthFrom     | 目次の階層, 開始 [1-6]                                                                   | number | 2       |
-| markdown-toc-num.tocDepthTo       | 目次の階層, 終了 [1-6]                                                                   | number | 3       |
-| markdown-toc-num.chapterDepthFrom | 見出しの階層, 開始 [1-6]                                                                 | number | 2       |
-| markdown-toc-num.chapterDepthTo   | 見出しの階層, 終了 [1-6]                                                                 | number | 6       |
-| markdown-toc-num.anchorMode       | アンカーの様式 [`vscode,gitlab`, `vscode`, `gitlab`, `github`, `azure`, `embed`, `none`] | string | vscode  |
+## 3. コマンドと設定値
 
-各設定値はマークダウンファイル内でインラインでも指定できる。
+### 3.1. コマンド
 
-```md
-<!-- TOC tocDepth:2..3 chapterDepth:2..6 anchorMode:embed -->
+| Title                                          | Command                              | Keybinding | In the Editor Right Click Menu |
+| :--------------------------------------------- | :----------------------------------- | :--------- | :----------------------------- |
+| TOC: Insert/Update (markdown-toc-num)          | markdown-toc-num.insertToc           |            | Yes (設定で非表示にできます)   |
+| TOC: Remove (markdown-toc-num)                 | markdown-toc-num.removeToc           |            | Yes (設定で非表示にできます)   |
+| Chapter num.: Insert/Update (markdown-toc-num) | markdown-toc-num.insertChapterNumber |            | Yes (設定で非表示にできます)   |
+| Chapter num.: Remove (markdown-toc-num)        | markdown-toc-num.removeChapterNumber |            | Yes (設定で非表示にできます)   |
 
-<!-- TOC tocDepthFrom:2 tocDepthTo:3 chapterDepthFrom:1 chapterDepthTo:6 anchorMode:embed -->
+### 3.2. 設定値
 
-<!-- TOC tocDepthFrom:1 tocDepthTo:6 anchorMode:github -->
-```
+| Configuration ID                             | Description                                                                              | Type    | Default |
+| -------------------------------------------- | ---------------------------------------------------------------------------------------- | ------- | ------- |
+| markdown-toc-num.tocDepthFrom                | 目次の階層, 開始 [1-6]                                                                   | number  | 2       |
+| markdown-toc-num.tocDepthTo                  | 目次の階層, 終了 [1-6]                                                                   | number  | 3       |
+| markdown-toc-num.chapterDepthFrom            | 見出しの階層, 開始 [1-6]                                                                 | number  | 2       |
+| markdown-toc-num.chapterDepthTo              | 見出しの階層, 終了 [1-6]                                                                 | number  | 6       |
+| markdown-toc-num.anchorMode                  | アンカーの様式 [`vscode,gitlab`, `vscode`, `gitlab`, `github`, `azure`, `embed`, `none`] | string  | vscode  |
+| markdown-toc-num.showMenuInsertToc           | メニューからコマンドを非表示にする, TOC: Insert/Update                                   | boolean | true    |
+| markdown-toc-num.showMenuRemoveToc           | メニューからコマンドを非表示にする, TOC: Remove                                          | boolean | true    |
+| markdown-toc-num.showMenuInsertChapterNumber | メニューからコマンドを非表示にする, Chapter num.: Insert/Update                          | boolean | true    |
+| markdown-toc-num.showMenuRemoveChapterNumber | メニューからコマンドを非表示にする, Chapter num.: Remove                                 | boolean | true    |
 
-## 3. 補足機能
+## 4. 補足機能
 
-### 3.1. 目次から除外する
+### 4.1. 目次から除外する
 
-対象の見出しの上に<!-- omit in toc -->と入力することで、その見出しは目次内容から除外される。
+対象の見出しの行に<!-- omit in toc -->と入力することで、その見出しは目次内容から除外される。
 
-```md
-# title
+### 4.2. 章番号の連番から除外する
 
-<!-- TOC tocDepth:2..3 chapterDepth:2..6 anchorMode:github -->
+対象の見出しの行に<!-- omit from numbering -->と入力することで、その見出しは章番号の連番から除外される。
 
-- [1. AAA](#user-content-1-aaa)
-    - [1.2. AAA-2](#user-content-12-aaa-2)
-
-<!-- /TOC -->
-
-## 1. AAA
-
-### 1.1. AAA-1 <!-- omit in toc -->
-
-### 1.2. AAA-2
-```
-
-### 3.2. 目次に含める見出しの階層を指定する
+### 4.3. 目次に含める見出しの階層を指定する
 
 設定の markdown-toc-num.tocDepthFrom, markdown-toc-num.tocDepthTo で指定した範囲の階層のみ目次に含める。
 
@@ -64,19 +59,19 @@
 
 以下のように本文中で指定することもできる。
 
-#### 3.2.1. 方法1
+#### 4.3.1. 方法1
 
 ```md
 <!-- TOC tocDepthFrom:1 tocDepthTo:6 -->
 ```
 
-#### 3.2.2. 方法2
+#### 4.3.2. 方法2
 
 ```md
 <!-- TOC tocDepth:1..6 -->
 ```
 
-### 3.3. 見出しに番号を付ける階層を指定する
+### 4.4. 見出しに番号を付ける階層を指定する
 
 設定の markdown-toc-num.chapterDepthFrom, markdown-toc-num.chapterDepthTo で指定した範囲の階層のみ番号を付けるようにできる。
 
@@ -84,30 +79,29 @@
 
 以下のように本文中で指定することもできる。
 
-#### 3.3.1. 方法1
+#### 4.4.1. 方法1
 
 ```md
 <!-- TOC chapterDepthFrom:2 chapterDepthTo:6 -->
 ```
 
-#### 3.3.2. 方法2
+#### 4.4.2. 方法2
 
 ```md
 <!-- TOC chapterDepth:2..6 -->
 ```
 
-## 4. 注力
-
-特に日本語にフォーカスしたマークダウン目次作成エクステンション
-
 ## 5. アンカー作成スキーム
 
-4種類が使えます。変更するにはanchorModeを指定します。
+5種類が使えます。変更するにはanchorModeを指定します。
 
 1. VSCode プレビュー画面 & GitLab スタイル
 1. Azure DevOps スタイル
 1. GitHub スタイル
 1. 独自埋め込みスタイル
+1. アンカーなし
+
+それぞれの詳細は readme を見てください。
 
 ### 5.1. 参考にしたサイト
 

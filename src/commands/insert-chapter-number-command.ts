@@ -4,7 +4,7 @@ import * as chapterNumber from './model/markdown-chapter-number';
 
 
 export function insertChapterNumberCommand(): void {
-    console.debug('insertChapterNumberCommand');
+    // console.debug('insertChapterNumberCommand');
 
     const editor = vscode.window.activeTextEditor as vscode.TextEditor;
     const doc = editor.document;
@@ -12,7 +12,7 @@ export function insertChapterNumberCommand(): void {
     const srcText = doc.getText();
 
     const current = config.getCurrentConfig(srcText);
-    console.debug(current);
+    // console.debug(current);
 
     const removedText = chapterNumber.removeChapterNumber(srcText);
     const insertedText = chapterNumber.insertChapterNumber(removedText, current.chapterDepthFrom, current.chapterDepthTo);

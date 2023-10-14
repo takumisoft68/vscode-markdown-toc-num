@@ -11,7 +11,7 @@ export const enum AnchorMode {
 };
 
 export function makeTocText(srcText: string, depthFrom: number, depthTo: number, indentSize: number, anchorMode: AnchorMode): string {
-    console.debug('markdown-toc-num.makeTocText');
+    // console.debug('markdown-toc-num.makeTocText');
 
     // チャプターをパースする
     const chapters = chapterParser.parseChapter(srcText);
@@ -182,7 +182,7 @@ function makeAnchorEmbed(text: string): string {
 }
 
 export function insertEmbeddedAnchor(srcText: string, depthFrom: number, depthTo: number): string {
-    console.debug('markdown-toc-num.insertEmbeddedAnchor');
+    // console.debug('markdown-toc-num.insertEmbeddedAnchor');
 
     // チャプターをパースする
     const chapters = chapterParser.parseChapter(srcText);
@@ -239,7 +239,7 @@ function replaceAll(srcText: string, from: string, to: string) {
 }
 
 export function removeEmbeddedAnchor(srcText: string): string {
-    console.debug('markdown-toc-num.removeEmbeddedAnchor');
+    // console.debug('markdown-toc-num.removeEmbeddedAnchor');
 
     const lines = srcText.split(/\r\n|\n|\r/);
 

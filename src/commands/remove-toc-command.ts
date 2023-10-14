@@ -4,7 +4,7 @@ import * as tocFinder from './model/markdown-toc-helpers/toc-position-finder';
 import * as toc from './model/markdown-toc';
 
 export function removeTocCommand(): void {
-    console.debug('removeTocCommand');
+    // console.debug('removeTocCommand');
     const editor = vscode.window.activeTextEditor as vscode.TextEditor;
     const doc = editor.document;
 
@@ -12,7 +12,7 @@ export function removeTocCommand(): void {
     const srcText = doc.getText();
     // 設定値を取得する
     const current = config.getCurrentConfig(srcText);
-    console.debug(current);
+    // console.debug(current);
 
     // TOCのマークアップ位置を取得する
     const [tocMarkLineStart, tocMarkLineEnd, ] = tocFinder.getTocPosition(srcText);

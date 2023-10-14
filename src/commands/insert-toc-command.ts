@@ -5,7 +5,7 @@ import * as tocFinder from './model/markdown-toc-helpers/toc-position-finder';
 
 
 export function insertTocCommand(): void {
-    console.debug('insertTocCommand');
+    // console.debug('insertTocCommand');
     const editor = vscode.window.activeTextEditor as vscode.TextEditor;
     const doc = editor.document;
 
@@ -13,7 +13,7 @@ export function insertTocCommand(): void {
     const srcText = doc.getText();
     // 設定値を取得する
     const current = config.getCurrentConfig(srcText);
-    console.debug(current);
+    // console.debug(current);
 
     // カーソル位置を取得
     const [cursorLine, cursorPos] = [editor.selection.anchor.line, editor.selection.anchor.character];
