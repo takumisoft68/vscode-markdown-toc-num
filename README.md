@@ -9,22 +9,37 @@ Add commands for table of contents (TOC) and chapter numbering to markdown.
 - Control each depth independently
 - Insert anchor in TOC
 
-## 2. Demo
+### 1.1. Demo
 
 ![demo](images/insert.gif)
 
 This gif animation is from the previous version.  
-The menu names are different from the current version.
+The menu names are different from the latest version.
 
-### 2.1. Configuration
+## 2. Commands and Configurations
 
-| Configuration ID                  | Description                                                                            | Type   | Default |
-| --------------------------------- | -------------------------------------------------------------------------------------- | ------ | ------- |
-| markdown-toc-num.tocDepthFrom     | TOC depth control, from [1-6]                                                          | number | 2       |
-| markdown-toc-num.tocDepthTo       | TOC depth control, to [1-6]                                                            | number | 3       |
-| markdown-toc-num.chapterDepthFrom | Chapter numbering depth control, from [1-6]                                            | number | 2       |
-| markdown-toc-num.chapterDepthTo   | Chapter numbering depth control, to [1-6]                                              | number | 6       |
-| markdown-toc-num.anchorMode       | Anchor style [`vscode,gitlab`, `vscode`, `gitlab`, `github`, `azure`, `embed`, `none`] | string | vscode  |
+### 2.1. Commands
+
+| Title                                          | Command                              | Keybinding | In the Editor Right Click Menu      |
+| :--------------------------------------------- | :----------------------------------- | :--------- | :---------------------------------- |
+| TOC: Insert/Update (markdown-toc-num)          | markdown-toc-num.insertToc           |            | Yes (You can hide by configuration) |
+| TOC: Remove (markdown-toc-num)                 | markdown-toc-num.removeToc           |            | Yes (You can hide by configuration) |
+| Chapter num.: Insert/Update (markdown-toc-num) | markdown-toc-num.insertChapterNumber |            | Yes (You can hide by configuration) |
+| Chapter num.: Remove (markdown-toc-num)        | markdown-toc-num.removeChapterNumber |            | Yes (You can hide by configuration) |
+
+### 2.2. Configurations
+
+| Configuration ID                             | Description                                                                            | Type    | Default |
+| -------------------------------------------- | -------------------------------------------------------------------------------------- | ------- | ------- |
+| markdown-toc-num.tocDepthFrom                | TOC depth control, from [1-6]                                                          | number  | 2       |
+| markdown-toc-num.tocDepthTo                  | TOC depth control, to [1-6]                                                            | number  | 3       |
+| markdown-toc-num.chapterDepthFrom            | Chapter numbering depth control, from [1-6]                                            | number  | 2       |
+| markdown-toc-num.chapterDepthTo              | Chapter numbering depth control, to [1-6]                                              | number  | 6       |
+| markdown-toc-num.anchorMode                  | Anchor style [`vscode,gitlab`, `vscode`, `gitlab`, `github`, `azure`, `embed`, `none`] | string  | vscode  |
+| markdown-toc-num.showMenuInsertToc           | Show command in context menu, TOC: Insert/Update                                       | boolean | true    |
+| markdown-toc-num.showMenuRemoveToc           | Show command in context menu, TOC: Remove                                              | boolean | true    |
+| markdown-toc-num.showMenuInsertChapterNumber | Show command in context menu, Chapter num.: Insert/Update                              | boolean | true    |
+| markdown-toc-num.showMenuRemoveChapterNumber | Show command in context menu, Chapter num.: Remove                                     | boolean | true    |
 
 You can override them inline.
 
@@ -77,6 +92,8 @@ This chapter is excluded from numbering.
 ```
 
 ## 4. Anchor Styles
+
+You can select anchor style from `vscode,gitlab`, `vscode`, `gitlab`, `github`, `azure`, `embed`, or `none`.
 
 ### 4.1. VSCode & GitLab style
 

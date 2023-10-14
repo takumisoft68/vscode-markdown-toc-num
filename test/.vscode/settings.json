@@ -3,6 +3,10 @@
     "markdown-toc-num.chapterDepthFrom": 2,
     "markdown-toc-num.chapterDepthTo": 6,
     "markdown-toc-num.tocDepthFrom": 2,
-    "markdown-toc-num.tocDepthTo": 4
+    "markdown-toc-num.tocDepthTo": 4,
+    "markdown-toc-num.showMenuInsertToc": true,
+    "markdown-toc-num.showMenuInsertChapterNumber": true,
+    "markdown-toc-num.showMenuRemoveChapterNumber": true,
+    "markdown-toc-num.showMenuRemoveToc": true
 
 }

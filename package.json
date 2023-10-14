@@ -41,30 +41,50 @@
 		"menus": {
 			"editor/context": [
 				{
-					"when": "editorLangId == markdown",
+					"when": "editorLangId == markdown && markdown-toc-num.context.showMenuInsertToc",
 					"command": "markdown-toc-num.insertToc",
 					"group": "markdown-toc-num@3"
 				},
 				{
-					"when": "editorLangId == markdown",
+					"when": "editorLangId == markdown && markdown-toc-num.context.showMenuRemoveToc",
 					"command": "markdown-toc-num.removeToc",
 					"group": "markdown-toc-num@4"
 				},
 				{
-					"when": "editorLangId == markdown",
+					"when": "editorLangId == markdown && markdown-toc-num.context.showMenuInsertChapterNumber",
 					"command": "markdown-toc-num.insertChapterNumber",
 					"group": "markdown-toc-num@1"
 				},
 				{
-					"when": "editorLangId == markdown",
+					"when": "editorLangId == markdown && markdown-toc-num.context.showMenuRemoveChapterNumber",
 					"command": "markdown-toc-num.removeChapterNumber",
 					"group": "markdown-toc-num@2"
 				}
 			]
 		},
 		"configuration": {
-			"title": "Markdown TOC",
+			"title": "Markdown TOC & Chapter Number",
 			"properties": {
+				"markdown-toc-num.showMenuInsertToc": {
+					"type": "boolean",
+					"default": true,
+					"description": "Show command in context menu, TOC: Insert/Update"
+				},
+				"markdown-toc-num.showMenuRemoveToc": {
+					"type": "boolean",
+					"default": true,
+					"description": "Show command in context menu, TOC: Remove"
+				},
+				"markdown-toc-num.showMenuInsertChapterNumber": {
+					"type": "boolean",
+					"default": true,
+					"description": "Show command in context menu, Chapter num.: Insert/Update"
+				},
+				"markdown-toc-num.showMenuRemoveChapterNumber": {
+					"type": "boolean",
+					"default": true,
+					"description": "Show command in context menu, Chapter num.: Remove"
+				},
 				"markdown-toc-num.tocDepthFrom": {
 					"type": "number",
 					"default": 2,
