@@ -2,7 +2,7 @@
 
 All notable changes to the "markdown-toc-num" extension will be documented in this file.
 
-## v0.2.1
+## v1.0.0
 
 - [add] configuration to hide each context menu item
 - [fix] add keyword to omit chapter from numbering (#12)
